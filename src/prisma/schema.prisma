@@ -1,0 +1,39 @@
+// This is your Prisma schema file.
+// We include the User model in the same schema for simple PrismaClient generation.
+
+generator client {
+  provider = "prisma-client-js"
+  output = "../../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id           String    @id @default(uuid())
+  name         String?
+  email        String    @unique
+  password     String
+  gender       String?
+  age          Int?
+  address      String?
+  refreshToken String?   @db.Text
+  role         Role      @default(USER)
+  createdBy    Json?
+  updatedBy    Json?
+  deletedBy    Json?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  isDeleted    Boolean   @default(false)
+  deletedAt    DateTime?
+
+  @@map("users")
+}
+
