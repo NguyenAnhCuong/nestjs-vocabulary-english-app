@@ -2,7 +2,6 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { compareSync, genSaltSync, hashSync } from 'bcrypt';
 import { IUser } from './users.controller';
-//@ts-ignore
 import { Role } from '@prisma/client';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -44,6 +43,32 @@ export class UsersService {
           id: user.id,
           email: user.email,
         } as any,
+      },
+    });
+  }
+
+  // src/users/users.service.ts
+  async upsertGoogleUser(data: {
+    email: string;
+    name: string;
+    googleId: string;
+    avatarUrl?: string;
+  }) {
+    return await this.prisma.user.upsert({
+      where: { email: data.email },
+      update: {
+        googleId: data.googleId, // Cập nhật ID Google nếu có thay đổi
+        name: data.name,
+      },
+      create: {
+        email: data.email,
+        name: data.name,
+        googleId: data.googleId,
+        password: null, // User Google không có mật khẩu local
+        role: Role.USER,
+        provider: 'GOOGLE', // Để biết user này đến từ đâu
+        avatarUrl: data.avatarUrl,
+        createdBy: { id: data.googleId, email: data.email } as any,
       },
     });
   }

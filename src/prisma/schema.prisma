@@ -20,7 +20,6 @@ model User {
   id           String    @id @default(uuid())
   name         String?
   email        String    @unique
-  password     String
   gender       String?
   age          Int?
   address      String?
@@ -33,6 +32,18 @@ model User {
   updatedAt    DateTime  @updatedAt
   isDeleted    Boolean   @default(false)
   deletedAt    DateTime?
+
+  // 1. Password cần chuyển thành Optional (?) vì đăng nhập Google không có mật khẩu local
+  password     String?  
+  
+  // 2. Lưu ID định danh từ Google (sub) để nhận diện người dùng trong các lần login sau
+  googleId     String?  @unique
+  
+  // 3. Lưu ảnh đại diện từ Google cung cấp (người dùng rất thích cái này)
+  avatarUrl    String?
+  
+  // 4. Phân loại người dùng login từ nguồn nào (GOOGLE hoặc LOCAL)
+  provider     String   @default("LOCAL")
 
   @@map("users")
 }
