@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
@@ -41,6 +41,33 @@ export class AuthService {
     return refreshToken;
   };
 
+  // src/auth/auth.service.ts
+  async handleRefreshToken(refreshToken: string, res: Response) {
+    try {
+      // 1. Kiểm tra token có hợp lệ không (sai secret, hết hạn...)
+      const payload = this.jwtService.verify(refreshToken, {
+        secret: this.configService.get<string>('JWT_REFRESH_SECRET'),
+      });
+
+      // 2. Tìm user trong DB bằng ID từ payload
+      const user = await this.usersService.findOne(payload.id);
+
+      // 3. So khớp refresh_token gửi lên với cái lưu trong DB
+      if (user && user.refreshToken === refreshToken) {
+        // 4. Nếu khớp, tiến hành login lại để lấy bộ token mới (AT & RT mới)
+        return this.login(user as any, res);
+      } else {
+        throw new BadRequestException(
+          'Refresh token không hợp lệ hoặc đã bị sử dụng',
+        );
+      }
+    } catch (error) {
+      throw new BadRequestException(
+        'Refresh token đã hết hạn hoặc không hợp lệ',
+      );
+    }
+  }
+
   async register(createUserDto: any, createdBy: any) {
     return this.usersService.create(createUserDto, createdBy);
   }
@@ -73,6 +100,7 @@ export class AuthService {
 
     return {
       access_token: this.jwtService.sign(payload),
+      refresh_token: refreshToken,
       user: {
         id,
         name,

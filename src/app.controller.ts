@@ -49,6 +49,17 @@ export class AppController {
     return req.user;
   }
 
+  @Public()
+  @Post('/refresh')
+  @ResponseMessage('Refresh token success')
+  async handleRefresh(
+    @Body('refresh_token') refreshToken: string,
+    @Res({ passthrough: true }) res: any,
+  ) {
+    if (!refreshToken) throw new BadRequestException('Thiếu refresh token');
+    return this.authService.handleRefreshToken(refreshToken, res);
+  }
+
   // src/app.controller.ts
   @Public()
   @Post('/google-login')
