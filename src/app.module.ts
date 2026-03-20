@@ -9,6 +9,12 @@ import { WordsModule } from './words/words.module';
 import { LearningConfigModule } from './learning-config/learning-config.module';
 import { TopicsModule } from './topics/topics.module';
 import { WordProgressModule } from './word-progress/word-progress.module';
+import { ImportExportModule } from './import-export/import-export.module';
+import { NotificationsModule } from './notifications/notifications.module';
+import { QuizzesModule } from './quizzes/quizzes.module';
+import { UserGoalsModule } from './user-goals/user-goals.module';
+import { StudySessionsModule } from './study-sessions/study-sessions.module';
+import { UserWordsModule } from './user-words/user-words.module';
 
 @Module({
   imports: [
@@ -19,6 +25,12 @@ import { WordProgressModule } from './word-progress/word-progress.module';
     LearningConfigModule,
     TopicsModule,
     WordProgressModule,
+    ImportExportModule,
+    NotificationsModule,
+    QuizzesModule,
+    UserGoalsModule,
+    StudySessionsModule,
+    UserWordsModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
