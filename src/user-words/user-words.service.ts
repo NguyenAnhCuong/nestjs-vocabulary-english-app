@@ -3,7 +3,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUserWordDto } from './dto/create-user-word.dto';
 import { PartialType } from '@nestjs/mapped-types';
-import type { IUser } from 'src/common/interfaces';
+import { IUser } from 'src/common/interfaces';
 
 class UpdateUserWordDto extends PartialType(CreateUserWordDto) {}
 
@@ -90,9 +90,20 @@ export class UserWordsService {
 
   async remove(id: string, user: IUser) {
     await this.findOne(id, user.id);
-    return this.prisma.userWord.update({
-      where: { id },
-      data: { isDeleted: true, deletedAt: new Date() },
-    });
+
+    // Dùng transaction: soft-delete UserWord + xoá hẳn WordProgress + Favourite
+    // Xoá WordProgress để GET /word-progress/stats trả về số liệu đúng ngay lập tức
+    return this.prisma.$transaction([
+      this.prisma.wordProgress.deleteMany({
+        where: { userWordId: id, userId: user.id },
+      }),
+      this.prisma.favourite.deleteMany({
+        where: { userWordId: id, userId: user.id },
+      }),
+      this.prisma.userWord.update({
+        where: { id },
+        data: { isDeleted: true, deletedAt: new Date() },
+      }),
+    ]);
   }
 }
