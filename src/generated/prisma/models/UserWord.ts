@@ -270,9 +270,9 @@ export type UserWordWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"UserWord"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"UserWord"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"UserWord"> | Date | string | null
+  favourites?: Prisma.FavouriteListRelationFilter
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   wordProgress?: Prisma.XOR<Prisma.WordProgressNullableScalarRelationFilter, Prisma.WordProgressWhereInput> | null
-  favourites?: Prisma.FavouriteListRelationFilter
 }
 
 export type UserWordOrderByWithRelationInput = {
@@ -292,9 +292,9 @@ export type UserWordOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  favourites?: Prisma.FavouriteOrderByRelationAggregateInput
   user?: Prisma.UserOrderByWithRelationInput
   wordProgress?: Prisma.WordProgressOrderByWithRelationInput
-  favourites?: Prisma.FavouriteOrderByRelationAggregateInput
 }
 
 export type UserWordWhereUniqueInput = Prisma.AtLeast<{
@@ -317,9 +317,9 @@ export type UserWordWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"UserWord"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"UserWord"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"UserWord"> | Date | string | null
+  favourites?: Prisma.FavouriteListRelationFilter
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   wordProgress?: Prisma.XOR<Prisma.WordProgressNullableScalarRelationFilter, Prisma.WordProgressWhereInput> | null
-  favourites?: Prisma.FavouriteListRelationFilter
 }, "id">
 
 export type UserWordOrderByWithAggregationInput = {
@@ -382,9 +382,9 @@ export type UserWordCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserWordInput
   user: Prisma.UserCreateNestedOneWithoutUserWordsInput
   wordProgress?: Prisma.WordProgressCreateNestedOneWithoutUserWordInput
-  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserWordInput
 }
 
 export type UserWordUncheckedCreateInput = {
@@ -404,8 +404,8 @@ export type UserWordUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  wordProgress?: Prisma.WordProgressUncheckedCreateNestedOneWithoutUserWordInput
   favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserWordInput
+  wordProgress?: Prisma.WordProgressUncheckedCreateNestedOneWithoutUserWordInput
 }
 
 export type UserWordUpdateInput = {
@@ -424,9 +424,9 @@ export type UserWordUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  favourites?: Prisma.FavouriteUpdateManyWithoutUserWordNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutUserWordsNestedInput
   wordProgress?: Prisma.WordProgressUpdateOneWithoutUserWordNestedInput
-  favourites?: Prisma.FavouriteUpdateManyWithoutUserWordNestedInput
 }
 
 export type UserWordUncheckedUpdateInput = {
@@ -446,8 +446,8 @@ export type UserWordUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  wordProgress?: Prisma.WordProgressUncheckedUpdateOneWithoutUserWordNestedInput
   favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserWordNestedInput
+  wordProgress?: Prisma.WordProgressUncheckedUpdateOneWithoutUserWordNestedInput
 }
 
 export type UserWordCreateManyInput = {
@@ -668,8 +668,8 @@ export type UserWordCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  wordProgress?: Prisma.WordProgressCreateNestedOneWithoutUserWordInput
   favourites?: Prisma.FavouriteCreateNestedManyWithoutUserWordInput
+  wordProgress?: Prisma.WordProgressCreateNestedOneWithoutUserWordInput
 }
 
 export type UserWordUncheckedCreateWithoutUserInput = {
@@ -688,8 +688,8 @@ export type UserWordUncheckedCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  wordProgress?: Prisma.WordProgressUncheckedCreateNestedOneWithoutUserWordInput
   favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserWordInput
+  wordProgress?: Prisma.WordProgressUncheckedCreateNestedOneWithoutUserWordInput
 }
 
 export type UserWordCreateOrConnectWithoutUserInput = {
@@ -756,8 +756,8 @@ export type UserWordCreateWithoutWordProgressInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  user: Prisma.UserCreateNestedOneWithoutUserWordsInput
   favourites?: Prisma.FavouriteCreateNestedManyWithoutUserWordInput
+  user: Prisma.UserCreateNestedOneWithoutUserWordsInput
 }
 
 export type UserWordUncheckedCreateWithoutWordProgressInput = {
@@ -812,8 +812,8 @@ export type UserWordUpdateWithoutWordProgressInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  user?: Prisma.UserUpdateOneRequiredWithoutUserWordsNestedInput
   favourites?: Prisma.FavouriteUpdateManyWithoutUserWordNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutUserWordsNestedInput
 }
 
 export type UserWordUncheckedUpdateWithoutWordProgressInput = {
@@ -966,8 +966,8 @@ export type UserWordUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  wordProgress?: Prisma.WordProgressUpdateOneWithoutUserWordNestedInput
   favourites?: Prisma.FavouriteUpdateManyWithoutUserWordNestedInput
+  wordProgress?: Prisma.WordProgressUpdateOneWithoutUserWordNestedInput
 }
 
 export type UserWordUncheckedUpdateWithoutUserInput = {
@@ -986,8 +986,8 @@ export type UserWordUncheckedUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  wordProgress?: Prisma.WordProgressUncheckedUpdateOneWithoutUserWordNestedInput
   favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserWordNestedInput
+  wordProgress?: Prisma.WordProgressUncheckedUpdateOneWithoutUserWordNestedInput
 }
 
 export type UserWordUncheckedUpdateManyWithoutUserInput = {
@@ -1056,9 +1056,9 @@ export type UserWordSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
+  favourites?: boolean | Prisma.UserWord$favouritesArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   wordProgress?: boolean | Prisma.UserWord$wordProgressArgs<ExtArgs>
-  favourites?: boolean | Prisma.UserWord$favouritesArgs<ExtArgs>
   _count?: boolean | Prisma.UserWordCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["userWord"]>
 
@@ -1123,9 +1123,9 @@ export type UserWordSelectScalar = {
 
 export type UserWordOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "en" | "phonetic" | "type" | "level" | "meaning" | "example" | "note" | "source" | "imageUrl" | "audioUrl" | "isDeleted" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["userWord"]>
 export type UserWordInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  favourites?: boolean | Prisma.UserWord$favouritesArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   wordProgress?: boolean | Prisma.UserWord$wordProgressArgs<ExtArgs>
-  favourites?: boolean | Prisma.UserWord$favouritesArgs<ExtArgs>
   _count?: boolean | Prisma.UserWordCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserWordIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1138,15 +1138,9 @@ export type UserWordIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type $UserWordPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "UserWord"
   objects: {
-    user: Prisma.$UserPayload<ExtArgs>
-    /**
-     * Tiến độ học từ riêng này (1-to-1)
-     */
-    wordProgress: Prisma.$WordProgressPayload<ExtArgs> | null
-    /**
-     * User có thể yêu thích từ riêng của mình
-     */
     favourites: Prisma.$FavouritePayload<ExtArgs>[]
+    user: Prisma.$UserPayload<ExtArgs>
+    wordProgress: Prisma.$WordProgressPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1565,9 +1559,9 @@ readonly fields: UserWordFieldRefs;
  */
 export interface Prisma__UserWordClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  favourites<T extends Prisma.UserWord$favouritesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserWord$favouritesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FavouritePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   wordProgress<T extends Prisma.UserWord$wordProgressArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserWord$wordProgressArgs<ExtArgs>>): Prisma.Prisma__WordProgressClient<runtime.Types.Result.GetResult<Prisma.$WordProgressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  favourites<T extends Prisma.UserWord$favouritesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserWord$favouritesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FavouritePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2009,25 +2003,6 @@ export type UserWordDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
- * UserWord.wordProgress
- */
-export type UserWord$wordProgressArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the WordProgress
-   */
-  select?: Prisma.WordProgressSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the WordProgress
-   */
-  omit?: Prisma.WordProgressOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.WordProgressInclude<ExtArgs> | null
-  where?: Prisma.WordProgressWhereInput
-}
-
-/**
  * UserWord.favourites
  */
 export type UserWord$favouritesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2049,6 +2024,25 @@ export type UserWord$favouritesArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   distinct?: Prisma.FavouriteScalarFieldEnum | Prisma.FavouriteScalarFieldEnum[]
+}
+
+/**
+ * UserWord.wordProgress
+ */
+export type UserWord$wordProgressArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the WordProgress
+   */
+  select?: Prisma.WordProgressSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the WordProgress
+   */
+  omit?: Prisma.WordProgressOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WordProgressInclude<ExtArgs> | null
+  where?: Prisma.WordProgressWhereInput
 }
 
 /**

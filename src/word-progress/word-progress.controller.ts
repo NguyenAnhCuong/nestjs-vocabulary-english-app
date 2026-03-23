@@ -1,17 +1,10 @@
 // src/word-progress/word-progress.controller.ts
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { WordProgressService, ReviewResultDto } from './word-progress.service';
 import { ResponseMessage, User } from 'src/decorator/customize';
-import type { IUser } from 'src/common/interfaces';
-import {
-  IsEnum,
-  IsNumber,
-  IsOptional,
-  IsString,
-  Max,
-  Min,
-} from 'class-validator';
+import { IsNumber, IsOptional, IsString, Max, Min } from 'class-validator';
 import { MemoryStatus } from '@prisma/client';
+import type { IUser } from 'src/common/interfaces';
 
 class SubmitReviewDto implements ReviewResultDto {
   @IsNumber()
@@ -76,16 +69,28 @@ export class WordProgressController {
   submitReview(@Body() dto: SubmitReviewDto, @User() user: IUser) {
     return this.service.submitReview(dto, user.id);
   }
+
+  @Get('topic/:topicId')
+  @ResponseMessage('Tiến độ theo chủ đề')
+  getProgressByTopic(@Param('topicId') topicId: string, @User() user: IUser) {
+    return this.service.getProgressByTopic(user.id, topicId);
+  }
+
+  @Get('level/:level')
+  @ResponseMessage('Tiến độ theo cấp độ')
+  getProgressByLevel(@Param('level') level: string, @User() user: IUser) {
+    return this.service.getProgressByLevel(user.id, level);
+  }
+
+  @Get('all-topics')
+  @ResponseMessage('Tiến độ tất cả chủ đề')
+  getAllTopicProgress(@User() user: IUser) {
+    return this.service.getAllTopicProgress(user.id);
+  }
+
+  @Get('all-levels')
+  @ResponseMessage('Tiến độ tất cả cấp độ')
+  getAllLevelProgress(@User() user: IUser) {
+    return this.service.getAllLevelProgress(user.id);
+  }
 }
-
-// ─────────────────────────────────────────────────────────────────────────────
-
-// src/word-progress/word-progress.module.ts
-import { Module } from '@nestjs/common';
-
-@Module({
-  controllers: [WordProgressController],
-  providers: [WordProgressService],
-  exports: [WordProgressService],
-})
-export class WordProgressModule {}

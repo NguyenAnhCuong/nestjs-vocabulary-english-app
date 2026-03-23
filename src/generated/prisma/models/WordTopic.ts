@@ -158,15 +158,15 @@ export type WordTopicWhereInput = {
   NOT?: Prisma.WordTopicWhereInput | Prisma.WordTopicWhereInput[]
   wordId?: Prisma.StringFilter<"WordTopic"> | string
   topicId?: Prisma.StringFilter<"WordTopic"> | string
-  word?: Prisma.XOR<Prisma.WordScalarRelationFilter, Prisma.WordWhereInput>
   topic?: Prisma.XOR<Prisma.TopicScalarRelationFilter, Prisma.TopicWhereInput>
+  word?: Prisma.XOR<Prisma.WordScalarRelationFilter, Prisma.WordWhereInput>
 }
 
 export type WordTopicOrderByWithRelationInput = {
   wordId?: Prisma.SortOrder
   topicId?: Prisma.SortOrder
-  word?: Prisma.WordOrderByWithRelationInput
   topic?: Prisma.TopicOrderByWithRelationInput
+  word?: Prisma.WordOrderByWithRelationInput
 }
 
 export type WordTopicWhereUniqueInput = Prisma.AtLeast<{
@@ -176,8 +176,8 @@ export type WordTopicWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.WordTopicWhereInput | Prisma.WordTopicWhereInput[]
   wordId?: Prisma.StringFilter<"WordTopic"> | string
   topicId?: Prisma.StringFilter<"WordTopic"> | string
-  word?: Prisma.XOR<Prisma.WordScalarRelationFilter, Prisma.WordWhereInput>
   topic?: Prisma.XOR<Prisma.TopicScalarRelationFilter, Prisma.TopicWhereInput>
+  word?: Prisma.XOR<Prisma.WordScalarRelationFilter, Prisma.WordWhereInput>
 }, "wordId_topicId">
 
 export type WordTopicOrderByWithAggregationInput = {
@@ -197,8 +197,8 @@ export type WordTopicScalarWhereWithAggregatesInput = {
 }
 
 export type WordTopicCreateInput = {
-  word: Prisma.WordCreateNestedOneWithoutWordTopicsInput
   topic: Prisma.TopicCreateNestedOneWithoutWordTopicsInput
+  word: Prisma.WordCreateNestedOneWithoutWordTopicsInput
 }
 
 export type WordTopicUncheckedCreateInput = {
@@ -207,8 +207,8 @@ export type WordTopicUncheckedCreateInput = {
 }
 
 export type WordTopicUpdateInput = {
-  word?: Prisma.WordUpdateOneRequiredWithoutWordTopicsNestedInput
   topic?: Prisma.TopicUpdateOneRequiredWithoutWordTopicsNestedInput
+  word?: Prisma.WordUpdateOneRequiredWithoutWordTopicsNestedInput
 }
 
 export type WordTopicUncheckedUpdateInput = {
@@ -457,22 +457,22 @@ export type WordTopicUncheckedUpdateManyWithoutWordInput = {
 export type WordTopicSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   wordId?: boolean
   topicId?: boolean
-  word?: boolean | Prisma.WordDefaultArgs<ExtArgs>
   topic?: boolean | Prisma.TopicDefaultArgs<ExtArgs>
+  word?: boolean | Prisma.WordDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["wordTopic"]>
 
 export type WordTopicSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   wordId?: boolean
   topicId?: boolean
-  word?: boolean | Prisma.WordDefaultArgs<ExtArgs>
   topic?: boolean | Prisma.TopicDefaultArgs<ExtArgs>
+  word?: boolean | Prisma.WordDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["wordTopic"]>
 
 export type WordTopicSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   wordId?: boolean
   topicId?: boolean
-  word?: boolean | Prisma.WordDefaultArgs<ExtArgs>
   topic?: boolean | Prisma.TopicDefaultArgs<ExtArgs>
+  word?: boolean | Prisma.WordDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["wordTopic"]>
 
 export type WordTopicSelectScalar = {
@@ -482,23 +482,23 @@ export type WordTopicSelectScalar = {
 
 export type WordTopicOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"wordId" | "topicId", ExtArgs["result"]["wordTopic"]>
 export type WordTopicInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  word?: boolean | Prisma.WordDefaultArgs<ExtArgs>
   topic?: boolean | Prisma.TopicDefaultArgs<ExtArgs>
+  word?: boolean | Prisma.WordDefaultArgs<ExtArgs>
 }
 export type WordTopicIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  word?: boolean | Prisma.WordDefaultArgs<ExtArgs>
   topic?: boolean | Prisma.TopicDefaultArgs<ExtArgs>
+  word?: boolean | Prisma.WordDefaultArgs<ExtArgs>
 }
 export type WordTopicIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  word?: boolean | Prisma.WordDefaultArgs<ExtArgs>
   topic?: boolean | Prisma.TopicDefaultArgs<ExtArgs>
+  word?: boolean | Prisma.WordDefaultArgs<ExtArgs>
 }
 
 export type $WordTopicPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "WordTopic"
   objects: {
-    word: Prisma.$WordPayload<ExtArgs>
     topic: Prisma.$TopicPayload<ExtArgs>
+    word: Prisma.$WordPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     wordId: string
@@ -897,8 +897,8 @@ readonly fields: WordTopicFieldRefs;
  */
 export interface Prisma__WordTopicClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  word<T extends Prisma.WordDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WordDefaultArgs<ExtArgs>>): Prisma.Prisma__WordClient<runtime.Types.Result.GetResult<Prisma.$WordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   topic<T extends Prisma.TopicDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TopicDefaultArgs<ExtArgs>>): Prisma.Prisma__TopicClient<runtime.Types.Result.GetResult<Prisma.$TopicPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  word<T extends Prisma.WordDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WordDefaultArgs<ExtArgs>>): Prisma.Prisma__WordClient<runtime.Types.Result.GetResult<Prisma.$WordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

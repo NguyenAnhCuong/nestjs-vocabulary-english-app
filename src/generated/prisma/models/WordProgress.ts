@@ -314,8 +314,8 @@ export type WordProgressWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"WordProgress"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"WordProgress"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  word?: Prisma.XOR<Prisma.WordNullableScalarRelationFilter, Prisma.WordWhereInput> | null
   userWord?: Prisma.XOR<Prisma.UserWordNullableScalarRelationFilter, Prisma.UserWordWhereInput> | null
+  word?: Prisma.XOR<Prisma.WordNullableScalarRelationFilter, Prisma.WordWhereInput> | null
 }
 
 export type WordProgressOrderByWithRelationInput = {
@@ -335,8 +335,8 @@ export type WordProgressOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
-  word?: Prisma.WordOrderByWithRelationInput
   userWord?: Prisma.UserWordOrderByWithRelationInput
+  word?: Prisma.WordOrderByWithRelationInput
 }
 
 export type WordProgressWhereUniqueInput = Prisma.AtLeast<{
@@ -360,8 +360,8 @@ export type WordProgressWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"WordProgress"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"WordProgress"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  word?: Prisma.XOR<Prisma.WordNullableScalarRelationFilter, Prisma.WordWhereInput> | null
   userWord?: Prisma.XOR<Prisma.UserWordNullableScalarRelationFilter, Prisma.UserWordWhereInput> | null
+  word?: Prisma.XOR<Prisma.WordNullableScalarRelationFilter, Prisma.WordWhereInput> | null
 }, "id" | "userWordId" | "userId_wordId">
 
 export type WordProgressOrderByWithAggregationInput = {
@@ -422,8 +422,8 @@ export type WordProgressCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutWordProgressInput
-  word?: Prisma.WordCreateNestedOneWithoutWordProgressInput
   userWord?: Prisma.UserWordCreateNestedOneWithoutWordProgressInput
+  word?: Prisma.WordCreateNestedOneWithoutWordProgressInput
 }
 
 export type WordProgressUncheckedCreateInput = {
@@ -458,8 +458,8 @@ export type WordProgressUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutWordProgressNestedInput
-  word?: Prisma.WordUpdateOneWithoutWordProgressNestedInput
   userWord?: Prisma.UserWordUpdateOneWithoutWordProgressNestedInput
+  word?: Prisma.WordUpdateOneWithoutWordProgressNestedInput
 }
 
 export type WordProgressUncheckedUpdateInput = {
@@ -766,8 +766,8 @@ export type WordProgressCreateWithoutUserInput = {
   lastReviewedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  word?: Prisma.WordCreateNestedOneWithoutWordProgressInput
   userWord?: Prisma.UserWordCreateNestedOneWithoutWordProgressInput
+  word?: Prisma.WordCreateNestedOneWithoutWordProgressInput
 }
 
 export type WordProgressUncheckedCreateWithoutUserInput = {
@@ -1008,8 +1008,8 @@ export type WordProgressUpdateWithoutUserInput = {
   lastReviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  word?: Prisma.WordUpdateOneWithoutWordProgressNestedInput
   userWord?: Prisma.UserWordUpdateOneWithoutWordProgressNestedInput
+  word?: Prisma.WordUpdateOneWithoutWordProgressNestedInput
 }
 
 export type WordProgressUncheckedUpdateWithoutUserInput = {
@@ -1133,8 +1133,8 @@ export type WordProgressSelect<ExtArgs extends runtime.Types.Extensions.Internal
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  word?: boolean | Prisma.WordProgress$wordArgs<ExtArgs>
   userWord?: boolean | Prisma.WordProgress$userWordArgs<ExtArgs>
+  word?: boolean | Prisma.WordProgress$wordArgs<ExtArgs>
 }, ExtArgs["result"]["wordProgress"]>
 
 export type WordProgressSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1154,8 +1154,8 @@ export type WordProgressSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  word?: boolean | Prisma.WordProgress$wordArgs<ExtArgs>
   userWord?: boolean | Prisma.WordProgress$userWordArgs<ExtArgs>
+  word?: boolean | Prisma.WordProgress$wordArgs<ExtArgs>
 }, ExtArgs["result"]["wordProgress"]>
 
 export type WordProgressSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1175,8 +1175,8 @@ export type WordProgressSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  word?: boolean | Prisma.WordProgress$wordArgs<ExtArgs>
   userWord?: boolean | Prisma.WordProgress$userWordArgs<ExtArgs>
+  word?: boolean | Prisma.WordProgress$wordArgs<ExtArgs>
 }, ExtArgs["result"]["wordProgress"]>
 
 export type WordProgressSelectScalar = {
@@ -1200,26 +1200,26 @@ export type WordProgressSelectScalar = {
 export type WordProgressOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "wordId" | "userWordId" | "source" | "status" | "repetitions" | "easeFactor" | "intervalDays" | "nextReviewAt" | "correctCount" | "wrongCount" | "lastReviewedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["wordProgress"]>
 export type WordProgressInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  word?: boolean | Prisma.WordProgress$wordArgs<ExtArgs>
   userWord?: boolean | Prisma.WordProgress$userWordArgs<ExtArgs>
+  word?: boolean | Prisma.WordProgress$wordArgs<ExtArgs>
 }
 export type WordProgressIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  word?: boolean | Prisma.WordProgress$wordArgs<ExtArgs>
   userWord?: boolean | Prisma.WordProgress$userWordArgs<ExtArgs>
+  word?: boolean | Prisma.WordProgress$wordArgs<ExtArgs>
 }
 export type WordProgressIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  word?: boolean | Prisma.WordProgress$wordArgs<ExtArgs>
   userWord?: boolean | Prisma.WordProgress$userWordArgs<ExtArgs>
+  word?: boolean | Prisma.WordProgress$wordArgs<ExtArgs>
 }
 
 export type $WordProgressPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "WordProgress"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
-    word: Prisma.$WordPayload<ExtArgs> | null
     userWord: Prisma.$UserWordPayload<ExtArgs> | null
+    word: Prisma.$WordPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1659,8 +1659,8 @@ readonly fields: WordProgressFieldRefs;
 export interface Prisma__WordProgressClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  word<T extends Prisma.WordProgress$wordArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WordProgress$wordArgs<ExtArgs>>): Prisma.Prisma__WordClient<runtime.Types.Result.GetResult<Prisma.$WordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   userWord<T extends Prisma.WordProgress$userWordArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WordProgress$userWordArgs<ExtArgs>>): Prisma.Prisma__UserWordClient<runtime.Types.Result.GetResult<Prisma.$UserWordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  word<T extends Prisma.WordProgress$wordArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WordProgress$wordArgs<ExtArgs>>): Prisma.Prisma__WordClient<runtime.Types.Result.GetResult<Prisma.$WordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2101,25 +2101,6 @@ export type WordProgressDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.
 }
 
 /**
- * WordProgress.word
- */
-export type WordProgress$wordArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Word
-   */
-  select?: Prisma.WordSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Word
-   */
-  omit?: Prisma.WordOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.WordInclude<ExtArgs> | null
-  where?: Prisma.WordWhereInput
-}
-
-/**
  * WordProgress.userWord
  */
 export type WordProgress$userWordArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2136,6 +2117,25 @@ export type WordProgress$userWordArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   include?: Prisma.UserWordInclude<ExtArgs> | null
   where?: Prisma.UserWordWhereInput
+}
+
+/**
+ * WordProgress.word
+ */
+export type WordProgress$wordArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Word
+   */
+  select?: Prisma.WordSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Word
+   */
+  omit?: Prisma.WordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WordInclude<ExtArgs> | null
+  where?: Prisma.WordWhereInput
 }
 
 /**

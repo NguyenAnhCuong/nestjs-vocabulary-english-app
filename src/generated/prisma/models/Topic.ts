@@ -649,9 +649,6 @@ export type TopicIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
 export type $TopicPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Topic"
   objects: {
-    /**
-     * Từ thuộc chủ đề (N-to-N qua junction table WordTopic)
-     */
     wordTopics: Prisma.$WordTopicPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{

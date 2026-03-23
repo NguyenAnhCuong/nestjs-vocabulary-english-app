@@ -1,6 +1,7 @@
 // src/word-progress/word-progress.service.ts
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { IUser } from 'src/common/interfaces';
 import { MemoryStatus } from '@prisma/client';
 
 export interface ReviewResultDto {
@@ -131,17 +132,16 @@ export class WordProgressService {
 
   // User bắt đầu học từ hệ thống (tạo progress record nếu chưa có)
   async startLearningWord(wordId: string, userId: string) {
-    const exists = await this.prisma.wordProgress.findUnique({
+    // upsert thay vì findUnique + create để tránh race condition (P2002)
+    // Nếu đã có record thì không thay đổi gì (update rỗng), chỉ create khi chưa tồn tại
+    return this.prisma.wordProgress.upsert({
       where: { userId_wordId: { userId, wordId } },
-    });
-    if (exists) return exists;
-
-    return this.prisma.wordProgress.create({
-      data: {
+      update: {}, // Không đổi gì nếu đã tồn tại
+      create: {
         userId,
         wordId,
         source: 'SYSTEM',
-        status: 'LEARNING',
+        status: 'NEW', // Chỉ LEARNING khi user đã nhấn đánh giá (submitReview)
       },
     });
   }
@@ -231,5 +231,103 @@ export class WordProgressService {
       REVIEWING: stats['REVIEWING'] ?? 0,
       MASTERED: stats['MASTERED'] ?? 0,
     };
+  }
+  // Tiến độ user theo từng Topic (% từ đã MASTERED hoặc REVIEWING)
+  async getProgressByTopic(userId: string, topicId: string) {
+    // Lấy tất cả wordId thuộc topic
+    const wordTopics = await this.prisma.wordTopic.findMany({
+      where: { topicId },
+      select: { wordId: true },
+    });
+    const wordIds = wordTopics.map((wt) => wt.wordId);
+    if (wordIds.length === 0)
+      return { topicId, totalWords: 0, learnedWords: 0, progressPct: 0 };
+
+    // Đếm từ đã THỰC SỰ ôn tập (có lastReviewedAt — đã nhấn đánh giá ít nhất 1 lần)
+    const reviewedCount = await this.prisma.wordProgress.count({
+      where: {
+        userId,
+        wordId: { in: wordIds },
+        lastReviewedAt: { not: null },
+      },
+    });
+
+    const masteredCount = await this.prisma.wordProgress.count({
+      where: {
+        userId,
+        wordId: { in: wordIds },
+        status: 'MASTERED',
+      },
+    });
+
+    const progressPct =
+      wordIds.length > 0
+        ? Math.round((reviewedCount / wordIds.length) * 100)
+        : 0;
+
+    return {
+      topicId,
+      totalWords: wordIds.length,
+      learnedWords: reviewedCount, // số từ đã ôn = đã nhấn đánh giá
+      masteredWords: masteredCount,
+      progressPct,
+    };
+  }
+
+  // Tiến độ user theo Level
+  async getProgressByLevel(userId: string, level: string) {
+    const words = await this.prisma.word.findMany({
+      where: { level: level as any, isActive: true },
+      select: { id: true },
+    });
+    const wordIds = words.map((w) => w.id);
+    if (wordIds.length === 0)
+      return { level, totalWords: 0, learnedWords: 0, progressPct: 0 };
+
+    const reviewedCount = await this.prisma.wordProgress.count({
+      where: {
+        userId,
+        wordId: { in: wordIds },
+        lastReviewedAt: { not: null },
+      },
+    });
+
+    const masteredCount = await this.prisma.wordProgress.count({
+      where: {
+        userId,
+        wordId: { in: wordIds },
+        status: 'MASTERED',
+      },
+    });
+
+    return {
+      level,
+      totalWords: wordIds.length,
+      learnedWords: reviewedCount,
+      masteredWords: masteredCount,
+      progressPct: Math.round((reviewedCount / wordIds.length) * 100),
+    };
+  }
+
+  // Lấy tiến độ tất cả topics cùng lúc (dùng cho TopicTab)
+  async getAllTopicProgress(userId: string) {
+    const topics = await this.prisma.topic.findMany({
+      where: { isActive: true },
+      select: { id: true },
+    });
+    const results = await Promise.all(
+      topics.map((t) => this.getProgressByTopic(userId, t.id)),
+    );
+    // Trả về map topicId → progressPct
+    return Object.fromEntries(results.map((r) => [r.topicId, r]));
+  }
+
+  // Lấy tiến độ tất cả levels cùng lúc (dùng cho LevelTab)
+  async getAllLevelProgress(userId: string) {
+    const levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+    const results = await Promise.all(
+      levels.map((l) => this.getProgressByLevel(userId, l)),
+    );
+    return Object.fromEntries(results.map((r) => [r.level, r]));
   }
 }

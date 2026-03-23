@@ -316,15 +316,15 @@ export type UserWhereInput = {
   googleId?: Prisma.StringNullableFilter<"User"> | string | null
   avatarUrl?: Prisma.StringNullableFilter<"User"> | string | null
   provider?: Prisma.StringFilter<"User"> | string
+  favourites?: Prisma.FavouriteListRelationFilter
+  importExports?: Prisma.ImportExportListRelationFilter
   learningConfig?: Prisma.XOR<Prisma.LearningConfigNullableScalarRelationFilter, Prisma.LearningConfigWhereInput> | null
+  notifications?: Prisma.NotificationListRelationFilter
+  quizAttempts?: Prisma.QuizAttemptListRelationFilter
+  studySessions?: Prisma.StudySessionListRelationFilter
+  goals?: Prisma.UserGoalListRelationFilter
   userWords?: Prisma.UserWordListRelationFilter
   wordProgress?: Prisma.WordProgressListRelationFilter
-  studySessions?: Prisma.StudySessionListRelationFilter
-  quizAttempts?: Prisma.QuizAttemptListRelationFilter
-  favourites?: Prisma.FavouriteListRelationFilter
-  goals?: Prisma.UserGoalListRelationFilter
-  notifications?: Prisma.NotificationListRelationFilter
-  importExports?: Prisma.ImportExportListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -347,15 +347,15 @@ export type UserOrderByWithRelationInput = {
   googleId?: Prisma.SortOrderInput | Prisma.SortOrder
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   provider?: Prisma.SortOrder
+  favourites?: Prisma.FavouriteOrderByRelationAggregateInput
+  importExports?: Prisma.ImportExportOrderByRelationAggregateInput
   learningConfig?: Prisma.LearningConfigOrderByWithRelationInput
+  notifications?: Prisma.NotificationOrderByRelationAggregateInput
+  quizAttempts?: Prisma.QuizAttemptOrderByRelationAggregateInput
+  studySessions?: Prisma.StudySessionOrderByRelationAggregateInput
+  goals?: Prisma.UserGoalOrderByRelationAggregateInput
   userWords?: Prisma.UserWordOrderByRelationAggregateInput
   wordProgress?: Prisma.WordProgressOrderByRelationAggregateInput
-  studySessions?: Prisma.StudySessionOrderByRelationAggregateInput
-  quizAttempts?: Prisma.QuizAttemptOrderByRelationAggregateInput
-  favourites?: Prisma.FavouriteOrderByRelationAggregateInput
-  goals?: Prisma.UserGoalOrderByRelationAggregateInput
-  notifications?: Prisma.NotificationOrderByRelationAggregateInput
-  importExports?: Prisma.ImportExportOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -381,15 +381,15 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   password?: Prisma.StringNullableFilter<"User"> | string | null
   avatarUrl?: Prisma.StringNullableFilter<"User"> | string | null
   provider?: Prisma.StringFilter<"User"> | string
+  favourites?: Prisma.FavouriteListRelationFilter
+  importExports?: Prisma.ImportExportListRelationFilter
   learningConfig?: Prisma.XOR<Prisma.LearningConfigNullableScalarRelationFilter, Prisma.LearningConfigWhereInput> | null
+  notifications?: Prisma.NotificationListRelationFilter
+  quizAttempts?: Prisma.QuizAttemptListRelationFilter
+  studySessions?: Prisma.StudySessionListRelationFilter
+  goals?: Prisma.UserGoalListRelationFilter
   userWords?: Prisma.UserWordListRelationFilter
   wordProgress?: Prisma.WordProgressListRelationFilter
-  studySessions?: Prisma.StudySessionListRelationFilter
-  quizAttempts?: Prisma.QuizAttemptListRelationFilter
-  favourites?: Prisma.FavouriteListRelationFilter
-  goals?: Prisma.UserGoalListRelationFilter
-  notifications?: Prisma.NotificationListRelationFilter
-  importExports?: Prisma.ImportExportListRelationFilter
 }, "id" | "email" | "googleId">
 
 export type UserOrderByWithAggregationInput = {
@@ -464,15 +464,15 @@ export type UserCreateInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
+  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
+  importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
   learningConfig?: Prisma.LearningConfigCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
   userWords?: Prisma.UserWordCreateNestedManyWithoutUserInput
   wordProgress?: Prisma.WordProgressCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
-  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
-  importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -495,15 +495,15 @@ export type UserUncheckedCreateInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
+  favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
+  importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
   learningConfig?: Prisma.LearningConfigUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
   userWords?: Prisma.UserWordUncheckedCreateNestedManyWithoutUserInput
   wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
-  favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
-  importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -526,15 +526,15 @@ export type UserUpdateInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
+  favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
+  importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
   learningConfig?: Prisma.LearningConfigUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
   userWords?: Prisma.UserWordUpdateManyWithoutUserNestedInput
   wordProgress?: Prisma.WordProgressUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
-  favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
-  importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -557,15 +557,15 @@ export type UserUncheckedUpdateInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
+  favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
+  importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
   learningConfig?: Prisma.LearningConfigUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
   userWords?: Prisma.UserWordUncheckedUpdateManyWithoutUserNestedInput
   wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
-  favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
-  importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -885,14 +885,14 @@ export type UserCreateWithoutLearningConfigInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
+  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
+  importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
   userWords?: Prisma.UserWordCreateNestedManyWithoutUserInput
   wordProgress?: Prisma.WordProgressCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
-  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
-  importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLearningConfigInput = {
@@ -915,14 +915,14 @@ export type UserUncheckedCreateWithoutLearningConfigInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
+  favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
+  importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
   userWords?: Prisma.UserWordUncheckedCreateNestedManyWithoutUserInput
   wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
-  favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
-  importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLearningConfigInput = {
@@ -961,14 +961,14 @@ export type UserUpdateWithoutLearningConfigInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
+  favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
+  importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
   userWords?: Prisma.UserWordUpdateManyWithoutUserNestedInput
   wordProgress?: Prisma.WordProgressUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
-  favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
-  importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLearningConfigInput = {
@@ -991,14 +991,14 @@ export type UserUncheckedUpdateWithoutLearningConfigInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
+  favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
+  importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
   userWords?: Prisma.UserWordUncheckedUpdateManyWithoutUserNestedInput
   wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
-  favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
-  importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserWordsInput = {
@@ -1021,14 +1021,14 @@ export type UserCreateWithoutUserWordsInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
-  learningConfig?: Prisma.LearningConfigCreateNestedOneWithoutUserInput
-  wordProgress?: Prisma.WordProgressCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
   favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
+  learningConfig?: Prisma.LearningConfigCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
+  wordProgress?: Prisma.WordProgressCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserWordsInput = {
@@ -1051,14 +1051,14 @@ export type UserUncheckedCreateWithoutUserWordsInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
-  learningConfig?: Prisma.LearningConfigUncheckedCreateNestedOneWithoutUserInput
-  wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
   favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
+  learningConfig?: Prisma.LearningConfigUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
+  wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserWordsInput = {
@@ -1097,14 +1097,14 @@ export type UserUpdateWithoutUserWordsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
-  learningConfig?: Prisma.LearningConfigUpdateOneWithoutUserNestedInput
-  wordProgress?: Prisma.WordProgressUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
   favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
+  learningConfig?: Prisma.LearningConfigUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
+  wordProgress?: Prisma.WordProgressUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserWordsInput = {
@@ -1127,14 +1127,14 @@ export type UserUncheckedUpdateWithoutUserWordsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
-  learningConfig?: Prisma.LearningConfigUncheckedUpdateOneWithoutUserNestedInput
-  wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
   favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
+  learningConfig?: Prisma.LearningConfigUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
+  wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutWordProgressInput = {
@@ -1157,14 +1157,14 @@ export type UserCreateWithoutWordProgressInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
-  learningConfig?: Prisma.LearningConfigCreateNestedOneWithoutUserInput
-  userWords?: Prisma.UserWordCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
   favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
+  learningConfig?: Prisma.LearningConfigCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
+  userWords?: Prisma.UserWordCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutWordProgressInput = {
@@ -1187,14 +1187,14 @@ export type UserUncheckedCreateWithoutWordProgressInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
-  learningConfig?: Prisma.LearningConfigUncheckedCreateNestedOneWithoutUserInput
-  userWords?: Prisma.UserWordUncheckedCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
   favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
+  learningConfig?: Prisma.LearningConfigUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
+  userWords?: Prisma.UserWordUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutWordProgressInput = {
@@ -1233,14 +1233,14 @@ export type UserUpdateWithoutWordProgressInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
-  learningConfig?: Prisma.LearningConfigUpdateOneWithoutUserNestedInput
-  userWords?: Prisma.UserWordUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
   favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
+  learningConfig?: Prisma.LearningConfigUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
+  userWords?: Prisma.UserWordUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWordProgressInput = {
@@ -1263,14 +1263,14 @@ export type UserUncheckedUpdateWithoutWordProgressInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
-  learningConfig?: Prisma.LearningConfigUncheckedUpdateOneWithoutUserNestedInput
-  userWords?: Prisma.UserWordUncheckedUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
   favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
+  learningConfig?: Prisma.LearningConfigUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
+  userWords?: Prisma.UserWordUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutFavouritesInput = {
@@ -1293,14 +1293,14 @@ export type UserCreateWithoutFavouritesInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
+  importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
   learningConfig?: Prisma.LearningConfigCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
   userWords?: Prisma.UserWordCreateNestedManyWithoutUserInput
   wordProgress?: Prisma.WordProgressCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
-  importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFavouritesInput = {
@@ -1323,14 +1323,14 @@ export type UserUncheckedCreateWithoutFavouritesInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
+  importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
   learningConfig?: Prisma.LearningConfigUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
   userWords?: Prisma.UserWordUncheckedCreateNestedManyWithoutUserInput
   wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
-  importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFavouritesInput = {
@@ -1369,14 +1369,14 @@ export type UserUpdateWithoutFavouritesInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
+  importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
   learningConfig?: Prisma.LearningConfigUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
   userWords?: Prisma.UserWordUpdateManyWithoutUserNestedInput
   wordProgress?: Prisma.WordProgressUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
-  importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFavouritesInput = {
@@ -1399,14 +1399,14 @@ export type UserUncheckedUpdateWithoutFavouritesInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
+  importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
   learningConfig?: Prisma.LearningConfigUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
   userWords?: Prisma.UserWordUncheckedUpdateManyWithoutUserNestedInput
   wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
-  importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutStudySessionsInput = {
@@ -1429,14 +1429,14 @@ export type UserCreateWithoutStudySessionsInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
+  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
+  importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
   learningConfig?: Prisma.LearningConfigCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
   userWords?: Prisma.UserWordCreateNestedManyWithoutUserInput
   wordProgress?: Prisma.WordProgressCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
-  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
-  importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutStudySessionsInput = {
@@ -1459,14 +1459,14 @@ export type UserUncheckedCreateWithoutStudySessionsInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
+  favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
+  importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
   learningConfig?: Prisma.LearningConfigUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
   userWords?: Prisma.UserWordUncheckedCreateNestedManyWithoutUserInput
   wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
-  favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
-  importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutStudySessionsInput = {
@@ -1505,14 +1505,14 @@ export type UserUpdateWithoutStudySessionsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
+  favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
+  importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
   learningConfig?: Prisma.LearningConfigUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
   userWords?: Prisma.UserWordUpdateManyWithoutUserNestedInput
   wordProgress?: Prisma.WordProgressUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
-  favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
-  importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutStudySessionsInput = {
@@ -1535,14 +1535,14 @@ export type UserUncheckedUpdateWithoutStudySessionsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
+  favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
+  importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
   learningConfig?: Prisma.LearningConfigUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
   userWords?: Prisma.UserWordUncheckedUpdateManyWithoutUserNestedInput
   wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
-  favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
-  importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutQuizAttemptsInput = {
@@ -1565,14 +1565,14 @@ export type UserCreateWithoutQuizAttemptsInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
+  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
+  importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
   learningConfig?: Prisma.LearningConfigCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
   userWords?: Prisma.UserWordCreateNestedManyWithoutUserInput
   wordProgress?: Prisma.WordProgressCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
-  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
-  importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutQuizAttemptsInput = {
@@ -1595,14 +1595,14 @@ export type UserUncheckedCreateWithoutQuizAttemptsInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
+  favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
+  importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
   learningConfig?: Prisma.LearningConfigUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
   userWords?: Prisma.UserWordUncheckedCreateNestedManyWithoutUserInput
   wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
-  favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
-  importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutQuizAttemptsInput = {
@@ -1641,14 +1641,14 @@ export type UserUpdateWithoutQuizAttemptsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
+  favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
+  importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
   learningConfig?: Prisma.LearningConfigUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
   userWords?: Prisma.UserWordUpdateManyWithoutUserNestedInput
   wordProgress?: Prisma.WordProgressUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
-  favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
-  importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutQuizAttemptsInput = {
@@ -1671,14 +1671,14 @@ export type UserUncheckedUpdateWithoutQuizAttemptsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
+  favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
+  importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
   learningConfig?: Prisma.LearningConfigUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
   userWords?: Prisma.UserWordUncheckedUpdateManyWithoutUserNestedInput
   wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
-  favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
-  importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutGoalsInput = {
@@ -1701,14 +1701,14 @@ export type UserCreateWithoutGoalsInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
+  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
+  importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
   learningConfig?: Prisma.LearningConfigCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
   userWords?: Prisma.UserWordCreateNestedManyWithoutUserInput
   wordProgress?: Prisma.WordProgressCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
-  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
-  importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutGoalsInput = {
@@ -1731,14 +1731,14 @@ export type UserUncheckedCreateWithoutGoalsInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
+  favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
+  importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
   learningConfig?: Prisma.LearningConfigUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
   userWords?: Prisma.UserWordUncheckedCreateNestedManyWithoutUserInput
   wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
-  favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
-  importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutGoalsInput = {
@@ -1777,14 +1777,14 @@ export type UserUpdateWithoutGoalsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
+  favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
+  importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
   learningConfig?: Prisma.LearningConfigUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
   userWords?: Prisma.UserWordUpdateManyWithoutUserNestedInput
   wordProgress?: Prisma.WordProgressUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
-  favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
-  importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutGoalsInput = {
@@ -1807,14 +1807,14 @@ export type UserUncheckedUpdateWithoutGoalsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
+  favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
+  importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
   learningConfig?: Prisma.LearningConfigUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
   userWords?: Prisma.UserWordUncheckedUpdateManyWithoutUserNestedInput
   wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
-  favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
-  importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -1837,14 +1837,14 @@ export type UserCreateWithoutNotificationsInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
+  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
+  importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
   learningConfig?: Prisma.LearningConfigCreateNestedOneWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
   userWords?: Prisma.UserWordCreateNestedManyWithoutUserInput
   wordProgress?: Prisma.WordProgressCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
-  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
-  importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -1867,14 +1867,14 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
+  favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
+  importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
   learningConfig?: Prisma.LearningConfigUncheckedCreateNestedOneWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
   userWords?: Prisma.UserWordUncheckedCreateNestedManyWithoutUserInput
   wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
-  favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
-  importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -1913,14 +1913,14 @@ export type UserUpdateWithoutNotificationsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
+  favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
+  importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
   learningConfig?: Prisma.LearningConfigUpdateOneWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
   userWords?: Prisma.UserWordUpdateManyWithoutUserNestedInput
   wordProgress?: Prisma.WordProgressUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
-  favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
-  importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -1943,14 +1943,14 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
+  favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
+  importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
   learningConfig?: Prisma.LearningConfigUncheckedUpdateOneWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
   userWords?: Prisma.UserWordUncheckedUpdateManyWithoutUserNestedInput
   wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
-  favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
-  importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutImportExportsInput = {
@@ -1973,14 +1973,14 @@ export type UserCreateWithoutImportExportsInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
+  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
   learningConfig?: Prisma.LearningConfigCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
   userWords?: Prisma.UserWordCreateNestedManyWithoutUserInput
   wordProgress?: Prisma.WordProgressCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptCreateNestedManyWithoutUserInput
-  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutImportExportsInput = {
@@ -2003,14 +2003,14 @@ export type UserUncheckedCreateWithoutImportExportsInput = {
   googleId?: string | null
   avatarUrl?: string | null
   provider?: string
+  favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
   learningConfig?: Prisma.LearningConfigUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
   userWords?: Prisma.UserWordUncheckedCreateNestedManyWithoutUserInput
   wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedCreateNestedManyWithoutUserInput
-  favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutImportExportsInput = {
@@ -2049,14 +2049,14 @@ export type UserUpdateWithoutImportExportsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
+  favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
   learningConfig?: Prisma.LearningConfigUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
   userWords?: Prisma.UserWordUpdateManyWithoutUserNestedInput
   wordProgress?: Prisma.WordProgressUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUpdateManyWithoutUserNestedInput
-  favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutImportExportsInput = {
@@ -2079,14 +2079,14 @@ export type UserUncheckedUpdateWithoutImportExportsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
+  favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
   learningConfig?: Prisma.LearningConfigUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
   userWords?: Prisma.UserWordUncheckedUpdateManyWithoutUserNestedInput
   wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
-  quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
-  favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -2095,25 +2095,25 @@ export type UserUncheckedUpdateWithoutImportExportsInput = {
  */
 
 export type UserCountOutputType = {
+  favourites: number
+  importExports: number
+  notifications: number
+  quizAttempts: number
+  studySessions: number
+  goals: number
   userWords: number
   wordProgress: number
-  studySessions: number
-  quizAttempts: number
-  favourites: number
-  goals: number
-  notifications: number
-  importExports: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  favourites?: boolean | UserCountOutputTypeCountFavouritesArgs
+  importExports?: boolean | UserCountOutputTypeCountImportExportsArgs
+  notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
+  quizAttempts?: boolean | UserCountOutputTypeCountQuizAttemptsArgs
+  studySessions?: boolean | UserCountOutputTypeCountStudySessionsArgs
+  goals?: boolean | UserCountOutputTypeCountGoalsArgs
   userWords?: boolean | UserCountOutputTypeCountUserWordsArgs
   wordProgress?: boolean | UserCountOutputTypeCountWordProgressArgs
-  studySessions?: boolean | UserCountOutputTypeCountStudySessionsArgs
-  quizAttempts?: boolean | UserCountOutputTypeCountQuizAttemptsArgs
-  favourites?: boolean | UserCountOutputTypeCountFavouritesArgs
-  goals?: boolean | UserCountOutputTypeCountGoalsArgs
-  notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
-  importExports?: boolean | UserCountOutputTypeCountImportExportsArgs
 }
 
 /**
@@ -2129,34 +2129,6 @@ export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountUserWordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.UserWordWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountWordProgressArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.WordProgressWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountStudySessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.StudySessionWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountQuizAttemptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.QuizAttemptWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
 export type UserCountOutputTypeCountFavouritesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.FavouriteWhereInput
 }
@@ -2164,8 +2136,8 @@ export type UserCountOutputTypeCountFavouritesArgs<ExtArgs extends runtime.Types
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountGoalsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.UserGoalWhereInput
+export type UserCountOutputTypeCountImportExportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ImportExportWhereInput
 }
 
 /**
@@ -2178,8 +2150,36 @@ export type UserCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Ty
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountImportExportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ImportExportWhereInput
+export type UserCountOutputTypeCountQuizAttemptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.QuizAttemptWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountStudySessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StudySessionWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountGoalsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserGoalWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountUserWordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserWordWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountWordProgressArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.WordProgressWhereInput
 }
 
 
@@ -2203,15 +2203,15 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   googleId?: boolean
   avatarUrl?: boolean
   provider?: boolean
+  favourites?: boolean | Prisma.User$favouritesArgs<ExtArgs>
+  importExports?: boolean | Prisma.User$importExportsArgs<ExtArgs>
   learningConfig?: boolean | Prisma.User$learningConfigArgs<ExtArgs>
+  notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
+  quizAttempts?: boolean | Prisma.User$quizAttemptsArgs<ExtArgs>
+  studySessions?: boolean | Prisma.User$studySessionsArgs<ExtArgs>
+  goals?: boolean | Prisma.User$goalsArgs<ExtArgs>
   userWords?: boolean | Prisma.User$userWordsArgs<ExtArgs>
   wordProgress?: boolean | Prisma.User$wordProgressArgs<ExtArgs>
-  studySessions?: boolean | Prisma.User$studySessionsArgs<ExtArgs>
-  quizAttempts?: boolean | Prisma.User$quizAttemptsArgs<ExtArgs>
-  favourites?: boolean | Prisma.User$favouritesArgs<ExtArgs>
-  goals?: boolean | Prisma.User$goalsArgs<ExtArgs>
-  notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
-  importExports?: boolean | Prisma.User$importExportsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -2283,15 +2283,15 @@ export type UserSelectScalar = {
 
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "gender" | "age" | "address" | "refreshToken" | "role" | "createdBy" | "updatedBy" | "deletedBy" | "createdAt" | "updatedAt" | "isDeleted" | "deletedAt" | "password" | "googleId" | "avatarUrl" | "provider", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  favourites?: boolean | Prisma.User$favouritesArgs<ExtArgs>
+  importExports?: boolean | Prisma.User$importExportsArgs<ExtArgs>
   learningConfig?: boolean | Prisma.User$learningConfigArgs<ExtArgs>
+  notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
+  quizAttempts?: boolean | Prisma.User$quizAttemptsArgs<ExtArgs>
+  studySessions?: boolean | Prisma.User$studySessionsArgs<ExtArgs>
+  goals?: boolean | Prisma.User$goalsArgs<ExtArgs>
   userWords?: boolean | Prisma.User$userWordsArgs<ExtArgs>
   wordProgress?: boolean | Prisma.User$wordProgressArgs<ExtArgs>
-  studySessions?: boolean | Prisma.User$studySessionsArgs<ExtArgs>
-  quizAttempts?: boolean | Prisma.User$quizAttemptsArgs<ExtArgs>
-  favourites?: boolean | Prisma.User$favouritesArgs<ExtArgs>
-  goals?: boolean | Prisma.User$goalsArgs<ExtArgs>
-  notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
-  importExports?: boolean | Prisma.User$importExportsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2300,42 +2300,15 @@ export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
-    /**
-     * Cài đặt và mục tiêu học tập cá nhân
-     */
-    learningConfig: Prisma.$LearningConfigPayload<ExtArgs> | null
-    /**
-     * Từ user tự thêm ("Từ Của Tôi")
-     */
-    userWords: Prisma.$UserWordPayload<ExtArgs>[]
-    /**
-     * Tiến độ SM-2 của từng từ (hệ thống + cá nhân)
-     */
-    wordProgress: Prisma.$WordProgressPayload<ExtArgs>[]
-    /**
-     * Phiên học hàng ngày (dùng tính streak & XP)
-     */
-    studySessions: Prisma.$StudySessionPayload<ExtArgs>[]
-    /**
-     * Lần làm quiz
-     */
-    quizAttempts: Prisma.$QuizAttemptPayload<ExtArgs>[]
-    /**
-     * Từ đánh dấu yêu thích ★
-     */
     favourites: Prisma.$FavouritePayload<ExtArgs>[]
-    /**
-     * Mục tiêu học tập hàng ngày / hàng tuần
-     */
-    goals: Prisma.$UserGoalPayload<ExtArgs>[]
-    /**
-     * Thông báo trong app
-     */
-    notifications: Prisma.$NotificationPayload<ExtArgs>[]
-    /**
-     * Lịch sử import/export dữ liệu
-     */
     importExports: Prisma.$ImportExportPayload<ExtArgs>[]
+    learningConfig: Prisma.$LearningConfigPayload<ExtArgs> | null
+    notifications: Prisma.$NotificationPayload<ExtArgs>[]
+    quizAttempts: Prisma.$QuizAttemptPayload<ExtArgs>[]
+    studySessions: Prisma.$StudySessionPayload<ExtArgs>[]
+    goals: Prisma.$UserGoalPayload<ExtArgs>[]
+    userWords: Prisma.$UserWordPayload<ExtArgs>[]
+    wordProgress: Prisma.$WordProgressPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2751,15 +2724,15 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  favourites<T extends Prisma.User$favouritesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$favouritesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FavouritePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  importExports<T extends Prisma.User$importExportsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$importExportsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ImportExportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   learningConfig<T extends Prisma.User$learningConfigArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$learningConfigArgs<ExtArgs>>): Prisma.Prisma__LearningConfigClient<runtime.Types.Result.GetResult<Prisma.$LearningConfigPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  notifications<T extends Prisma.User$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  quizAttempts<T extends Prisma.User$quizAttemptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$quizAttemptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$QuizAttemptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  studySessions<T extends Prisma.User$studySessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$studySessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StudySessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  goals<T extends Prisma.User$goalsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$goalsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserGoalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   userWords<T extends Prisma.User$userWordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userWordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserWordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   wordProgress<T extends Prisma.User$wordProgressArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$wordProgressArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WordProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  studySessions<T extends Prisma.User$studySessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$studySessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StudySessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  quizAttempts<T extends Prisma.User$quizAttemptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$quizAttemptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$QuizAttemptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  favourites<T extends Prisma.User$favouritesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$favouritesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FavouritePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  goals<T extends Prisma.User$goalsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$goalsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserGoalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  notifications<T extends Prisma.User$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  importExports<T extends Prisma.User$importExportsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$importExportsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ImportExportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3196,6 +3169,54 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
+ * User.favourites
+ */
+export type User$favouritesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Favourite
+   */
+  select?: Prisma.FavouriteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Favourite
+   */
+  omit?: Prisma.FavouriteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FavouriteInclude<ExtArgs> | null
+  where?: Prisma.FavouriteWhereInput
+  orderBy?: Prisma.FavouriteOrderByWithRelationInput | Prisma.FavouriteOrderByWithRelationInput[]
+  cursor?: Prisma.FavouriteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FavouriteScalarFieldEnum | Prisma.FavouriteScalarFieldEnum[]
+}
+
+/**
+ * User.importExports
+ */
+export type User$importExportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ImportExport
+   */
+  select?: Prisma.ImportExportSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ImportExport
+   */
+  omit?: Prisma.ImportExportOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ImportExportInclude<ExtArgs> | null
+  where?: Prisma.ImportExportWhereInput
+  orderBy?: Prisma.ImportExportOrderByWithRelationInput | Prisma.ImportExportOrderByWithRelationInput[]
+  cursor?: Prisma.ImportExportWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ImportExportScalarFieldEnum | Prisma.ImportExportScalarFieldEnum[]
+}
+
+/**
  * User.learningConfig
  */
 export type User$learningConfigArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3212,6 +3233,102 @@ export type User$learningConfigArgs<ExtArgs extends runtime.Types.Extensions.Int
    */
   include?: Prisma.LearningConfigInclude<ExtArgs> | null
   where?: Prisma.LearningConfigWhereInput
+}
+
+/**
+ * User.notifications
+ */
+export type User$notificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Notification
+   */
+  select?: Prisma.NotificationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Notification
+   */
+  omit?: Prisma.NotificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotificationInclude<ExtArgs> | null
+  where?: Prisma.NotificationWhereInput
+  orderBy?: Prisma.NotificationOrderByWithRelationInput | Prisma.NotificationOrderByWithRelationInput[]
+  cursor?: Prisma.NotificationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
+}
+
+/**
+ * User.quizAttempts
+ */
+export type User$quizAttemptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the QuizAttempt
+   */
+  select?: Prisma.QuizAttemptSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the QuizAttempt
+   */
+  omit?: Prisma.QuizAttemptOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.QuizAttemptInclude<ExtArgs> | null
+  where?: Prisma.QuizAttemptWhereInput
+  orderBy?: Prisma.QuizAttemptOrderByWithRelationInput | Prisma.QuizAttemptOrderByWithRelationInput[]
+  cursor?: Prisma.QuizAttemptWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.QuizAttemptScalarFieldEnum | Prisma.QuizAttemptScalarFieldEnum[]
+}
+
+/**
+ * User.studySessions
+ */
+export type User$studySessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the StudySession
+   */
+  select?: Prisma.StudySessionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the StudySession
+   */
+  omit?: Prisma.StudySessionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StudySessionInclude<ExtArgs> | null
+  where?: Prisma.StudySessionWhereInput
+  orderBy?: Prisma.StudySessionOrderByWithRelationInput | Prisma.StudySessionOrderByWithRelationInput[]
+  cursor?: Prisma.StudySessionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StudySessionScalarFieldEnum | Prisma.StudySessionScalarFieldEnum[]
+}
+
+/**
+ * User.goals
+ */
+export type User$goalsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserGoal
+   */
+  select?: Prisma.UserGoalSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserGoal
+   */
+  omit?: Prisma.UserGoalOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserGoalInclude<ExtArgs> | null
+  where?: Prisma.UserGoalWhereInput
+  orderBy?: Prisma.UserGoalOrderByWithRelationInput | Prisma.UserGoalOrderByWithRelationInput[]
+  cursor?: Prisma.UserGoalWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserGoalScalarFieldEnum | Prisma.UserGoalScalarFieldEnum[]
 }
 
 /**
@@ -3260,150 +3377,6 @@ export type User$wordProgressArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.WordProgressScalarFieldEnum | Prisma.WordProgressScalarFieldEnum[]
-}
-
-/**
- * User.studySessions
- */
-export type User$studySessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the StudySession
-   */
-  select?: Prisma.StudySessionSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the StudySession
-   */
-  omit?: Prisma.StudySessionOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.StudySessionInclude<ExtArgs> | null
-  where?: Prisma.StudySessionWhereInput
-  orderBy?: Prisma.StudySessionOrderByWithRelationInput | Prisma.StudySessionOrderByWithRelationInput[]
-  cursor?: Prisma.StudySessionWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.StudySessionScalarFieldEnum | Prisma.StudySessionScalarFieldEnum[]
-}
-
-/**
- * User.quizAttempts
- */
-export type User$quizAttemptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the QuizAttempt
-   */
-  select?: Prisma.QuizAttemptSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the QuizAttempt
-   */
-  omit?: Prisma.QuizAttemptOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.QuizAttemptInclude<ExtArgs> | null
-  where?: Prisma.QuizAttemptWhereInput
-  orderBy?: Prisma.QuizAttemptOrderByWithRelationInput | Prisma.QuizAttemptOrderByWithRelationInput[]
-  cursor?: Prisma.QuizAttemptWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.QuizAttemptScalarFieldEnum | Prisma.QuizAttemptScalarFieldEnum[]
-}
-
-/**
- * User.favourites
- */
-export type User$favouritesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Favourite
-   */
-  select?: Prisma.FavouriteSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Favourite
-   */
-  omit?: Prisma.FavouriteOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.FavouriteInclude<ExtArgs> | null
-  where?: Prisma.FavouriteWhereInput
-  orderBy?: Prisma.FavouriteOrderByWithRelationInput | Prisma.FavouriteOrderByWithRelationInput[]
-  cursor?: Prisma.FavouriteWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.FavouriteScalarFieldEnum | Prisma.FavouriteScalarFieldEnum[]
-}
-
-/**
- * User.goals
- */
-export type User$goalsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the UserGoal
-   */
-  select?: Prisma.UserGoalSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the UserGoal
-   */
-  omit?: Prisma.UserGoalOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserGoalInclude<ExtArgs> | null
-  where?: Prisma.UserGoalWhereInput
-  orderBy?: Prisma.UserGoalOrderByWithRelationInput | Prisma.UserGoalOrderByWithRelationInput[]
-  cursor?: Prisma.UserGoalWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.UserGoalScalarFieldEnum | Prisma.UserGoalScalarFieldEnum[]
-}
-
-/**
- * User.notifications
- */
-export type User$notificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Notification
-   */
-  select?: Prisma.NotificationSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Notification
-   */
-  omit?: Prisma.NotificationOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.NotificationInclude<ExtArgs> | null
-  where?: Prisma.NotificationWhereInput
-  orderBy?: Prisma.NotificationOrderByWithRelationInput | Prisma.NotificationOrderByWithRelationInput[]
-  cursor?: Prisma.NotificationWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
-}
-
-/**
- * User.importExports
- */
-export type User$importExportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ImportExport
-   */
-  select?: Prisma.ImportExportSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the ImportExport
-   */
-  omit?: Prisma.ImportExportOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ImportExportInclude<ExtArgs> | null
-  where?: Prisma.ImportExportWhereInput
-  orderBy?: Prisma.ImportExportOrderByWithRelationInput | Prisma.ImportExportOrderByWithRelationInput[]
-  cursor?: Prisma.ImportExportWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ImportExportScalarFieldEnum | Prisma.ImportExportScalarFieldEnum[]
 }
 
 /**

@@ -183,8 +183,8 @@ export type FavouriteWhereInput = {
   userWordId?: Prisma.StringNullableFilter<"Favourite"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Favourite"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  word?: Prisma.XOR<Prisma.WordNullableScalarRelationFilter, Prisma.WordWhereInput> | null
   userWord?: Prisma.XOR<Prisma.UserWordNullableScalarRelationFilter, Prisma.UserWordWhereInput> | null
+  word?: Prisma.XOR<Prisma.WordNullableScalarRelationFilter, Prisma.WordWhereInput> | null
 }
 
 export type FavouriteOrderByWithRelationInput = {
@@ -194,8 +194,8 @@ export type FavouriteOrderByWithRelationInput = {
   userWordId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
-  word?: Prisma.WordOrderByWithRelationInput
   userWord?: Prisma.UserWordOrderByWithRelationInput
+  word?: Prisma.WordOrderByWithRelationInput
 }
 
 export type FavouriteWhereUniqueInput = Prisma.AtLeast<{
@@ -210,8 +210,8 @@ export type FavouriteWhereUniqueInput = Prisma.AtLeast<{
   userWordId?: Prisma.StringNullableFilter<"Favourite"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Favourite"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  word?: Prisma.XOR<Prisma.WordNullableScalarRelationFilter, Prisma.WordWhereInput> | null
   userWord?: Prisma.XOR<Prisma.UserWordNullableScalarRelationFilter, Prisma.UserWordWhereInput> | null
+  word?: Prisma.XOR<Prisma.WordNullableScalarRelationFilter, Prisma.WordWhereInput> | null
 }, "id" | "userId_wordId" | "userId_userWordId">
 
 export type FavouriteOrderByWithAggregationInput = {
@@ -240,8 +240,8 @@ export type FavouriteCreateInput = {
   id?: string
   createdAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutFavouritesInput
-  word?: Prisma.WordCreateNestedOneWithoutFavouritesInput
   userWord?: Prisma.UserWordCreateNestedOneWithoutFavouritesInput
+  word?: Prisma.WordCreateNestedOneWithoutFavouritesInput
 }
 
 export type FavouriteUncheckedCreateInput = {
@@ -256,8 +256,8 @@ export type FavouriteUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutFavouritesNestedInput
-  word?: Prisma.WordUpdateOneWithoutFavouritesNestedInput
   userWord?: Prisma.UserWordUpdateOneWithoutFavouritesNestedInput
+  word?: Prisma.WordUpdateOneWithoutFavouritesNestedInput
 }
 
 export type FavouriteUncheckedUpdateInput = {
@@ -462,8 +462,8 @@ export type FavouriteUncheckedUpdateManyWithoutUserWordNestedInput = {
 export type FavouriteCreateWithoutUserInput = {
   id?: string
   createdAt?: Date | string
-  word?: Prisma.WordCreateNestedOneWithoutFavouritesInput
   userWord?: Prisma.UserWordCreateNestedOneWithoutFavouritesInput
+  word?: Prisma.WordCreateNestedOneWithoutFavouritesInput
 }
 
 export type FavouriteUncheckedCreateWithoutUserInput = {
@@ -600,8 +600,8 @@ export type FavouriteCreateManyUserInput = {
 export type FavouriteUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  word?: Prisma.WordUpdateOneWithoutFavouritesNestedInput
   userWord?: Prisma.UserWordUpdateOneWithoutFavouritesNestedInput
+  word?: Prisma.WordUpdateOneWithoutFavouritesNestedInput
 }
 
 export type FavouriteUncheckedUpdateWithoutUserInput = {
@@ -683,8 +683,8 @@ export type FavouriteSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   userWordId?: boolean
   createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  word?: boolean | Prisma.Favourite$wordArgs<ExtArgs>
   userWord?: boolean | Prisma.Favourite$userWordArgs<ExtArgs>
+  word?: boolean | Prisma.Favourite$wordArgs<ExtArgs>
 }, ExtArgs["result"]["favourite"]>
 
 export type FavouriteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -694,8 +694,8 @@ export type FavouriteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   userWordId?: boolean
   createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  word?: boolean | Prisma.Favourite$wordArgs<ExtArgs>
   userWord?: boolean | Prisma.Favourite$userWordArgs<ExtArgs>
+  word?: boolean | Prisma.Favourite$wordArgs<ExtArgs>
 }, ExtArgs["result"]["favourite"]>
 
 export type FavouriteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -705,8 +705,8 @@ export type FavouriteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   userWordId?: boolean
   createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  word?: boolean | Prisma.Favourite$wordArgs<ExtArgs>
   userWord?: boolean | Prisma.Favourite$userWordArgs<ExtArgs>
+  word?: boolean | Prisma.Favourite$wordArgs<ExtArgs>
 }, ExtArgs["result"]["favourite"]>
 
 export type FavouriteSelectScalar = {
@@ -720,26 +720,26 @@ export type FavouriteSelectScalar = {
 export type FavouriteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "wordId" | "userWordId" | "createdAt", ExtArgs["result"]["favourite"]>
 export type FavouriteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  word?: boolean | Prisma.Favourite$wordArgs<ExtArgs>
   userWord?: boolean | Prisma.Favourite$userWordArgs<ExtArgs>
+  word?: boolean | Prisma.Favourite$wordArgs<ExtArgs>
 }
 export type FavouriteIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  word?: boolean | Prisma.Favourite$wordArgs<ExtArgs>
   userWord?: boolean | Prisma.Favourite$userWordArgs<ExtArgs>
+  word?: boolean | Prisma.Favourite$wordArgs<ExtArgs>
 }
 export type FavouriteIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  word?: boolean | Prisma.Favourite$wordArgs<ExtArgs>
   userWord?: boolean | Prisma.Favourite$userWordArgs<ExtArgs>
+  word?: boolean | Prisma.Favourite$wordArgs<ExtArgs>
 }
 
 export type $FavouritePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Favourite"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
-    word: Prisma.$WordPayload<ExtArgs> | null
     userWord: Prisma.$UserWordPayload<ExtArgs> | null
+    word: Prisma.$WordPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1148,8 +1148,8 @@ readonly fields: FavouriteFieldRefs;
 export interface Prisma__FavouriteClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  word<T extends Prisma.Favourite$wordArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Favourite$wordArgs<ExtArgs>>): Prisma.Prisma__WordClient<runtime.Types.Result.GetResult<Prisma.$WordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   userWord<T extends Prisma.Favourite$userWordArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Favourite$userWordArgs<ExtArgs>>): Prisma.Prisma__UserWordClient<runtime.Types.Result.GetResult<Prisma.$UserWordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  word<T extends Prisma.Favourite$wordArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Favourite$wordArgs<ExtArgs>>): Prisma.Prisma__WordClient<runtime.Types.Result.GetResult<Prisma.$WordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1580,25 +1580,6 @@ export type FavouriteDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 /**
- * Favourite.word
- */
-export type Favourite$wordArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Word
-   */
-  select?: Prisma.WordSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Word
-   */
-  omit?: Prisma.WordOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.WordInclude<ExtArgs> | null
-  where?: Prisma.WordWhereInput
-}
-
-/**
  * Favourite.userWord
  */
 export type Favourite$userWordArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1615,6 +1596,25 @@ export type Favourite$userWordArgs<ExtArgs extends runtime.Types.Extensions.Inte
    */
   include?: Prisma.UserWordInclude<ExtArgs> | null
   where?: Prisma.UserWordWhereInput
+}
+
+/**
+ * Favourite.word
+ */
+export type Favourite$wordArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Word
+   */
+  select?: Prisma.WordSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Word
+   */
+  omit?: Prisma.WordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WordInclude<ExtArgs> | null
+  where?: Prisma.WordWhereInput
 }
 
 /**

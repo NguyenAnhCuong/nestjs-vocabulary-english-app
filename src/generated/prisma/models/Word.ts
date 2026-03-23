@@ -258,10 +258,10 @@ export type WordWhereInput = {
   isActive?: Prisma.BoolFilter<"Word"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Word"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Word"> | Date | string
-  wordTopics?: Prisma.WordTopicListRelationFilter
-  wordProgress?: Prisma.WordProgressListRelationFilter
   favourites?: Prisma.FavouriteListRelationFilter
   quizQuestions?: Prisma.QuizQuestionListRelationFilter
+  wordProgress?: Prisma.WordProgressListRelationFilter
+  wordTopics?: Prisma.WordTopicListRelationFilter
 }
 
 export type WordOrderByWithRelationInput = {
@@ -280,10 +280,10 @@ export type WordOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  wordTopics?: Prisma.WordTopicOrderByRelationAggregateInput
-  wordProgress?: Prisma.WordProgressOrderByRelationAggregateInput
   favourites?: Prisma.FavouriteOrderByRelationAggregateInput
   quizQuestions?: Prisma.QuizQuestionOrderByRelationAggregateInput
+  wordProgress?: Prisma.WordProgressOrderByRelationAggregateInput
+  wordTopics?: Prisma.WordTopicOrderByRelationAggregateInput
 }
 
 export type WordWhereUniqueInput = Prisma.AtLeast<{
@@ -305,10 +305,10 @@ export type WordWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"Word"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Word"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Word"> | Date | string
-  wordTopics?: Prisma.WordTopicListRelationFilter
-  wordProgress?: Prisma.WordProgressListRelationFilter
   favourites?: Prisma.FavouriteListRelationFilter
   quizQuestions?: Prisma.QuizQuestionListRelationFilter
+  wordProgress?: Prisma.WordProgressListRelationFilter
+  wordTopics?: Prisma.WordTopicListRelationFilter
 }, "id" | "en">
 
 export type WordOrderByWithAggregationInput = {
@@ -369,10 +369,10 @@ export type WordCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  wordTopics?: Prisma.WordTopicCreateNestedManyWithoutWordInput
-  wordProgress?: Prisma.WordProgressCreateNestedManyWithoutWordInput
   favourites?: Prisma.FavouriteCreateNestedManyWithoutWordInput
   quizQuestions?: Prisma.QuizQuestionCreateNestedManyWithoutWordInput
+  wordProgress?: Prisma.WordProgressCreateNestedManyWithoutWordInput
+  wordTopics?: Prisma.WordTopicCreateNestedManyWithoutWordInput
 }
 
 export type WordUncheckedCreateInput = {
@@ -391,10 +391,10 @@ export type WordUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  wordTopics?: Prisma.WordTopicUncheckedCreateNestedManyWithoutWordInput
-  wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutWordInput
   favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutWordInput
   quizQuestions?: Prisma.QuizQuestionUncheckedCreateNestedManyWithoutWordInput
+  wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutWordInput
+  wordTopics?: Prisma.WordTopicUncheckedCreateNestedManyWithoutWordInput
 }
 
 export type WordUpdateInput = {
@@ -413,10 +413,10 @@ export type WordUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  wordTopics?: Prisma.WordTopicUpdateManyWithoutWordNestedInput
-  wordProgress?: Prisma.WordProgressUpdateManyWithoutWordNestedInput
   favourites?: Prisma.FavouriteUpdateManyWithoutWordNestedInput
   quizQuestions?: Prisma.QuizQuestionUpdateManyWithoutWordNestedInput
+  wordProgress?: Prisma.WordProgressUpdateManyWithoutWordNestedInput
+  wordTopics?: Prisma.WordTopicUpdateManyWithoutWordNestedInput
 }
 
 export type WordUncheckedUpdateInput = {
@@ -435,10 +435,10 @@ export type WordUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  wordTopics?: Prisma.WordTopicUncheckedUpdateManyWithoutWordNestedInput
-  wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutWordNestedInput
   favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutWordNestedInput
   quizQuestions?: Prisma.QuizQuestionUncheckedUpdateManyWithoutWordNestedInput
+  wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutWordNestedInput
+  wordTopics?: Prisma.WordTopicUncheckedUpdateManyWithoutWordNestedInput
 }
 
 export type WordCreateManyInput = {
@@ -656,9 +656,9 @@ export type WordCreateWithoutWordTopicsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  wordProgress?: Prisma.WordProgressCreateNestedManyWithoutWordInput
   favourites?: Prisma.FavouriteCreateNestedManyWithoutWordInput
   quizQuestions?: Prisma.QuizQuestionCreateNestedManyWithoutWordInput
+  wordProgress?: Prisma.WordProgressCreateNestedManyWithoutWordInput
 }
 
 export type WordUncheckedCreateWithoutWordTopicsInput = {
@@ -677,9 +677,9 @@ export type WordUncheckedCreateWithoutWordTopicsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutWordInput
   favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutWordInput
   quizQuestions?: Prisma.QuizQuestionUncheckedCreateNestedManyWithoutWordInput
+  wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutWordInput
 }
 
 export type WordCreateOrConnectWithoutWordTopicsInput = {
@@ -714,9 +714,9 @@ export type WordUpdateWithoutWordTopicsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  wordProgress?: Prisma.WordProgressUpdateManyWithoutWordNestedInput
   favourites?: Prisma.FavouriteUpdateManyWithoutWordNestedInput
   quizQuestions?: Prisma.QuizQuestionUpdateManyWithoutWordNestedInput
+  wordProgress?: Prisma.WordProgressUpdateManyWithoutWordNestedInput
 }
 
 export type WordUncheckedUpdateWithoutWordTopicsInput = {
@@ -735,9 +735,9 @@ export type WordUncheckedUpdateWithoutWordTopicsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutWordNestedInput
   favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutWordNestedInput
   quizQuestions?: Prisma.QuizQuestionUncheckedUpdateManyWithoutWordNestedInput
+  wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutWordNestedInput
 }
 
 export type WordCreateWithoutWordProgressInput = {
@@ -756,9 +756,9 @@ export type WordCreateWithoutWordProgressInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  wordTopics?: Prisma.WordTopicCreateNestedManyWithoutWordInput
   favourites?: Prisma.FavouriteCreateNestedManyWithoutWordInput
   quizQuestions?: Prisma.QuizQuestionCreateNestedManyWithoutWordInput
+  wordTopics?: Prisma.WordTopicCreateNestedManyWithoutWordInput
 }
 
 export type WordUncheckedCreateWithoutWordProgressInput = {
@@ -777,9 +777,9 @@ export type WordUncheckedCreateWithoutWordProgressInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  wordTopics?: Prisma.WordTopicUncheckedCreateNestedManyWithoutWordInput
   favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutWordInput
   quizQuestions?: Prisma.QuizQuestionUncheckedCreateNestedManyWithoutWordInput
+  wordTopics?: Prisma.WordTopicUncheckedCreateNestedManyWithoutWordInput
 }
 
 export type WordCreateOrConnectWithoutWordProgressInput = {
@@ -814,9 +814,9 @@ export type WordUpdateWithoutWordProgressInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  wordTopics?: Prisma.WordTopicUpdateManyWithoutWordNestedInput
   favourites?: Prisma.FavouriteUpdateManyWithoutWordNestedInput
   quizQuestions?: Prisma.QuizQuestionUpdateManyWithoutWordNestedInput
+  wordTopics?: Prisma.WordTopicUpdateManyWithoutWordNestedInput
 }
 
 export type WordUncheckedUpdateWithoutWordProgressInput = {
@@ -835,9 +835,9 @@ export type WordUncheckedUpdateWithoutWordProgressInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  wordTopics?: Prisma.WordTopicUncheckedUpdateManyWithoutWordNestedInput
   favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutWordNestedInput
   quizQuestions?: Prisma.QuizQuestionUncheckedUpdateManyWithoutWordNestedInput
+  wordTopics?: Prisma.WordTopicUncheckedUpdateManyWithoutWordNestedInput
 }
 
 export type WordCreateWithoutFavouritesInput = {
@@ -856,9 +856,9 @@ export type WordCreateWithoutFavouritesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  wordTopics?: Prisma.WordTopicCreateNestedManyWithoutWordInput
-  wordProgress?: Prisma.WordProgressCreateNestedManyWithoutWordInput
   quizQuestions?: Prisma.QuizQuestionCreateNestedManyWithoutWordInput
+  wordProgress?: Prisma.WordProgressCreateNestedManyWithoutWordInput
+  wordTopics?: Prisma.WordTopicCreateNestedManyWithoutWordInput
 }
 
 export type WordUncheckedCreateWithoutFavouritesInput = {
@@ -877,9 +877,9 @@ export type WordUncheckedCreateWithoutFavouritesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  wordTopics?: Prisma.WordTopicUncheckedCreateNestedManyWithoutWordInput
-  wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutWordInput
   quizQuestions?: Prisma.QuizQuestionUncheckedCreateNestedManyWithoutWordInput
+  wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutWordInput
+  wordTopics?: Prisma.WordTopicUncheckedCreateNestedManyWithoutWordInput
 }
 
 export type WordCreateOrConnectWithoutFavouritesInput = {
@@ -914,9 +914,9 @@ export type WordUpdateWithoutFavouritesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  wordTopics?: Prisma.WordTopicUpdateManyWithoutWordNestedInput
-  wordProgress?: Prisma.WordProgressUpdateManyWithoutWordNestedInput
   quizQuestions?: Prisma.QuizQuestionUpdateManyWithoutWordNestedInput
+  wordProgress?: Prisma.WordProgressUpdateManyWithoutWordNestedInput
+  wordTopics?: Prisma.WordTopicUpdateManyWithoutWordNestedInput
 }
 
 export type WordUncheckedUpdateWithoutFavouritesInput = {
@@ -935,9 +935,9 @@ export type WordUncheckedUpdateWithoutFavouritesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  wordTopics?: Prisma.WordTopicUncheckedUpdateManyWithoutWordNestedInput
-  wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutWordNestedInput
   quizQuestions?: Prisma.QuizQuestionUncheckedUpdateManyWithoutWordNestedInput
+  wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutWordNestedInput
+  wordTopics?: Prisma.WordTopicUncheckedUpdateManyWithoutWordNestedInput
 }
 
 export type WordCreateWithoutQuizQuestionsInput = {
@@ -956,9 +956,9 @@ export type WordCreateWithoutQuizQuestionsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  wordTopics?: Prisma.WordTopicCreateNestedManyWithoutWordInput
-  wordProgress?: Prisma.WordProgressCreateNestedManyWithoutWordInput
   favourites?: Prisma.FavouriteCreateNestedManyWithoutWordInput
+  wordProgress?: Prisma.WordProgressCreateNestedManyWithoutWordInput
+  wordTopics?: Prisma.WordTopicCreateNestedManyWithoutWordInput
 }
 
 export type WordUncheckedCreateWithoutQuizQuestionsInput = {
@@ -977,9 +977,9 @@ export type WordUncheckedCreateWithoutQuizQuestionsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  wordTopics?: Prisma.WordTopicUncheckedCreateNestedManyWithoutWordInput
-  wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutWordInput
   favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutWordInput
+  wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutWordInput
+  wordTopics?: Prisma.WordTopicUncheckedCreateNestedManyWithoutWordInput
 }
 
 export type WordCreateOrConnectWithoutQuizQuestionsInput = {
@@ -1014,9 +1014,9 @@ export type WordUpdateWithoutQuizQuestionsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  wordTopics?: Prisma.WordTopicUpdateManyWithoutWordNestedInput
-  wordProgress?: Prisma.WordProgressUpdateManyWithoutWordNestedInput
   favourites?: Prisma.FavouriteUpdateManyWithoutWordNestedInput
+  wordProgress?: Prisma.WordProgressUpdateManyWithoutWordNestedInput
+  wordTopics?: Prisma.WordTopicUpdateManyWithoutWordNestedInput
 }
 
 export type WordUncheckedUpdateWithoutQuizQuestionsInput = {
@@ -1035,9 +1035,9 @@ export type WordUncheckedUpdateWithoutQuizQuestionsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  wordTopics?: Prisma.WordTopicUncheckedUpdateManyWithoutWordNestedInput
-  wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutWordNestedInput
   favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutWordNestedInput
+  wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutWordNestedInput
+  wordTopics?: Prisma.WordTopicUncheckedUpdateManyWithoutWordNestedInput
 }
 
 
@@ -1046,17 +1046,17 @@ export type WordUncheckedUpdateWithoutQuizQuestionsInput = {
  */
 
 export type WordCountOutputType = {
-  wordTopics: number
-  wordProgress: number
   favourites: number
   quizQuestions: number
+  wordProgress: number
+  wordTopics: number
 }
 
 export type WordCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  wordTopics?: boolean | WordCountOutputTypeCountWordTopicsArgs
-  wordProgress?: boolean | WordCountOutputTypeCountWordProgressArgs
   favourites?: boolean | WordCountOutputTypeCountFavouritesArgs
   quizQuestions?: boolean | WordCountOutputTypeCountQuizQuestionsArgs
+  wordProgress?: boolean | WordCountOutputTypeCountWordProgressArgs
+  wordTopics?: boolean | WordCountOutputTypeCountWordTopicsArgs
 }
 
 /**
@@ -1072,8 +1072,15 @@ export type WordCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
 /**
  * WordCountOutputType without action
  */
-export type WordCountOutputTypeCountWordTopicsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.WordTopicWhereInput
+export type WordCountOutputTypeCountFavouritesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FavouriteWhereInput
+}
+
+/**
+ * WordCountOutputType without action
+ */
+export type WordCountOutputTypeCountQuizQuestionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.QuizQuestionWhereInput
 }
 
 /**
@@ -1086,15 +1093,8 @@ export type WordCountOutputTypeCountWordProgressArgs<ExtArgs extends runtime.Typ
 /**
  * WordCountOutputType without action
  */
-export type WordCountOutputTypeCountFavouritesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.FavouriteWhereInput
-}
-
-/**
- * WordCountOutputType without action
- */
-export type WordCountOutputTypeCountQuizQuestionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.QuizQuestionWhereInput
+export type WordCountOutputTypeCountWordTopicsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.WordTopicWhereInput
 }
 
 
@@ -1114,10 +1114,10 @@ export type WordSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  wordTopics?: boolean | Prisma.Word$wordTopicsArgs<ExtArgs>
-  wordProgress?: boolean | Prisma.Word$wordProgressArgs<ExtArgs>
   favourites?: boolean | Prisma.Word$favouritesArgs<ExtArgs>
   quizQuestions?: boolean | Prisma.Word$quizQuestionsArgs<ExtArgs>
+  wordProgress?: boolean | Prisma.Word$wordProgressArgs<ExtArgs>
+  wordTopics?: boolean | Prisma.Word$wordTopicsArgs<ExtArgs>
   _count?: boolean | Prisma.WordCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["word"]>
 
@@ -1177,10 +1177,10 @@ export type WordSelectScalar = {
 
 export type WordOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "en" | "phonetic" | "type" | "level" | "meaning" | "meaningEn" | "example" | "exampleVi" | "audioUrl" | "imageUrl" | "tags" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["word"]>
 export type WordInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  wordTopics?: boolean | Prisma.Word$wordTopicsArgs<ExtArgs>
-  wordProgress?: boolean | Prisma.Word$wordProgressArgs<ExtArgs>
   favourites?: boolean | Prisma.Word$favouritesArgs<ExtArgs>
   quizQuestions?: boolean | Prisma.Word$quizQuestionsArgs<ExtArgs>
+  wordProgress?: boolean | Prisma.Word$wordProgressArgs<ExtArgs>
+  wordTopics?: boolean | Prisma.Word$wordTopicsArgs<ExtArgs>
   _count?: boolean | Prisma.WordCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type WordIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1189,22 +1189,10 @@ export type WordIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $WordPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Word"
   objects: {
-    /**
-     * Chủ đề của từ (N-to-N)
-     */
-    wordTopics: Prisma.$WordTopicPayload<ExtArgs>[]
-    /**
-     * Tiến độ học của user với từ này
-     */
-    wordProgress: Prisma.$WordProgressPayload<ExtArgs>[]
-    /**
-     * Từ có thể được yêu thích bởi nhiều user
-     */
     favourites: Prisma.$FavouritePayload<ExtArgs>[]
-    /**
-     * Từ xuất hiện trong câu hỏi quiz
-     */
     quizQuestions: Prisma.$QuizQuestionPayload<ExtArgs>[]
+    wordProgress: Prisma.$WordProgressPayload<ExtArgs>[]
+    wordTopics: Prisma.$WordTopicPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1640,10 +1628,10 @@ readonly fields: WordFieldRefs;
  */
 export interface Prisma__WordClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  wordTopics<T extends Prisma.Word$wordTopicsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Word$wordTopicsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WordTopicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  wordProgress<T extends Prisma.Word$wordProgressArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Word$wordProgressArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WordProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   favourites<T extends Prisma.Word$favouritesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Word$favouritesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FavouritePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   quizQuestions<T extends Prisma.Word$quizQuestionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Word$quizQuestionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$QuizQuestionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  wordProgress<T extends Prisma.Word$wordProgressArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Word$wordProgressArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WordProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  wordTopics<T extends Prisma.Word$wordTopicsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Word$wordTopicsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WordTopicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2076,54 +2064,6 @@ export type WordDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * Word.wordTopics
- */
-export type Word$wordTopicsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the WordTopic
-   */
-  select?: Prisma.WordTopicSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the WordTopic
-   */
-  omit?: Prisma.WordTopicOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.WordTopicInclude<ExtArgs> | null
-  where?: Prisma.WordTopicWhereInput
-  orderBy?: Prisma.WordTopicOrderByWithRelationInput | Prisma.WordTopicOrderByWithRelationInput[]
-  cursor?: Prisma.WordTopicWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.WordTopicScalarFieldEnum | Prisma.WordTopicScalarFieldEnum[]
-}
-
-/**
- * Word.wordProgress
- */
-export type Word$wordProgressArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the WordProgress
-   */
-  select?: Prisma.WordProgressSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the WordProgress
-   */
-  omit?: Prisma.WordProgressOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.WordProgressInclude<ExtArgs> | null
-  where?: Prisma.WordProgressWhereInput
-  orderBy?: Prisma.WordProgressOrderByWithRelationInput | Prisma.WordProgressOrderByWithRelationInput[]
-  cursor?: Prisma.WordProgressWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.WordProgressScalarFieldEnum | Prisma.WordProgressScalarFieldEnum[]
-}
-
-/**
  * Word.favourites
  */
 export type Word$favouritesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2169,6 +2109,54 @@ export type Word$quizQuestionsArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.QuizQuestionScalarFieldEnum | Prisma.QuizQuestionScalarFieldEnum[]
+}
+
+/**
+ * Word.wordProgress
+ */
+export type Word$wordProgressArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the WordProgress
+   */
+  select?: Prisma.WordProgressSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the WordProgress
+   */
+  omit?: Prisma.WordProgressOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WordProgressInclude<ExtArgs> | null
+  where?: Prisma.WordProgressWhereInput
+  orderBy?: Prisma.WordProgressOrderByWithRelationInput | Prisma.WordProgressOrderByWithRelationInput[]
+  cursor?: Prisma.WordProgressWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.WordProgressScalarFieldEnum | Prisma.WordProgressScalarFieldEnum[]
+}
+
+/**
+ * Word.wordTopics
+ */
+export type Word$wordTopicsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the WordTopic
+   */
+  select?: Prisma.WordTopicSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the WordTopic
+   */
+  omit?: Prisma.WordTopicOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WordTopicInclude<ExtArgs> | null
+  where?: Prisma.WordTopicWhereInput
+  orderBy?: Prisma.WordTopicOrderByWithRelationInput | Prisma.WordTopicOrderByWithRelationInput[]
+  cursor?: Prisma.WordTopicWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.WordTopicScalarFieldEnum | Prisma.WordTopicScalarFieldEnum[]
 }
 
 /**
