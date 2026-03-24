@@ -15,6 +15,7 @@ import { QuizzesModule } from './quizzes/quizzes.module';
 import { UserGoalsModule } from './user-goals/user-goals.module';
 import { StudySessionsModule } from './study-sessions/study-sessions.module';
 import { UserWordsModule } from './user-words/user-words.module';
+import { FavouritesModule } from './favourites/favourites.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { UserWordsModule } from './user-words/user-words.module';
     WordProgressModule,
     ImportExportModule,
     NotificationsModule,
+    FavouritesModule,
     QuizzesModule,
     UserGoalsModule,
     StudySessionsModule,
