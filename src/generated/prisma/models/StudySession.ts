@@ -14,7 +14,7 @@ import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
  * Model StudySession
- * Mỗi ngày user học = 1 bản ghi. Dùng để tính streak liên tục.
+ * 
  */
 export type StudySessionModel = runtime.Types.Result.DefaultSelection<Prisma.$StudySessionPayload>
 
@@ -694,25 +694,10 @@ export type $StudySessionPayload<ExtArgs extends runtime.Types.Extensions.Intern
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     userId: string
-    /**
-     * Chỉ lưu date (không có time) — group by ngày dễ hơn
-     */
     studyDate: Date
-    /**
-     * Tổng thời gian học trong ngày (giây)
-     */
     durationSecs: number
-    /**
-     * Số từ mới học
-     */
     newWordsCount: number
-    /**
-     * Số từ đã ôn
-     */
     reviewCount: number
-    /**
-     * XP kiếm được trong ngày
-     */
     xpEarned: number
     createdAt: Date
     updatedAt: Date

@@ -14,7 +14,7 @@ import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
  * Model Favourite
- * User đánh dấu ★ cho từ hệ thống HOẶC từ riêng của mình.
+ * 
  */
 export type FavouriteModel = runtime.Types.Result.DefaultSelection<Prisma.$FavouritePayload>
 
@@ -744,13 +744,7 @@ export type $FavouritePayload<ExtArgs extends runtime.Types.Extensions.InternalA
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     userId: string
-    /**
-     * Từ hệ thống (nullable — chỉ 1 trong 2 field có giá trị)
-     */
     wordId: string | null
-    /**
-     * Từ riêng của user (nullable)
-     */
     userWordId: string | null
     createdAt: Date
   }, ExtArgs["result"]["favourite"]>

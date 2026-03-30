@@ -5,7 +5,7 @@ export class UpdateWordDto extends PartialType(CreateWordDto) {}
 
 // src/words/dto/filter-word.dto.ts
 import { IsEnum, IsOptional, IsString } from 'class-validator';
-import { CefrLevel, WordType } from '@prisma/client';
+import { CefrLevel, WordType } from '../../generated/prisma/enums';
 import { PaginationDto } from 'src/common/dto/pagination.dto';
 
 export class FilterWordDto extends PaginationDto {

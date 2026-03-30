@@ -1,6 +1,6 @@
 // prisma/prisma.service.ts
 import { Injectable, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
-import { PrismaClient } from '@prisma/client'; // Quay lại dùng cái này
+import { PrismaClient } from '../generated/prisma/client'; // Quay lại dùng cái này
 
 @Injectable()
 export class PrismaService

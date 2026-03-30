@@ -14,8 +14,7 @@ import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
  * Model WordProgress
- * Ghi nhận tiến độ ghi nhớ của 1 user với 1 từ.
- * wordId XOR userWordId phải có giá trị (CHECK constraint nên thêm ở DB level).
+ * 
  */
 export type WordProgressModel = runtime.Types.Result.DefaultSelection<Prisma.$WordProgressPayload>
 
@@ -1224,43 +1223,16 @@ export type $WordProgressPayload<ExtArgs extends runtime.Types.Extensions.Intern
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     userId: string
-    /**
-     * Từ hệ thống — nullable (chỉ 1 trong 2 có giá trị)
-     */
     wordId: string | null
-    /**
-     * Từ riêng của user — nullable
-     */
     userWordId: string | null
     source: $Enums.LearningSource
     status: $Enums.MemoryStatus
-    /**
-     * Số lần ôn tập thành công liên tiếp
-     */
     repetitions: number
-    /**
-     * Easiness Factor — độ dễ ghi nhớ (2.5 = trung bình, tăng khi trả lời đúng)
-     */
     easeFactor: number
-    /**
-     * Khoảng cách ngày đến lần ôn tiếp theo
-     */
     intervalDays: number
-    /**
-     * Timestamp lần ôn tập tiếp theo (để query "từ cần ôn hôm nay")
-     */
     nextReviewAt: Date
-    /**
-     * Tổng số lần trả lời đúng
-     */
     correctCount: number
-    /**
-     * Tổng số lần trả lời sai
-     */
     wrongCount: number
-    /**
-     * Lần cuối ôn tập
-     */
     lastReviewedAt: Date | null
     createdAt: Date
     updatedAt: Date

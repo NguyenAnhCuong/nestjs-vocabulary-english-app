@@ -62,10 +62,10 @@ export const MemoryStatus = {
 export type MemoryStatus = (typeof MemoryStatus)[keyof typeof MemoryStatus]
 
 
-export const QuizResult = {
-  CORRECT: 'CORRECT',
-  INCORRECT: 'INCORRECT',
-  SKIPPED: 'SKIPPED'
+export const QuestionType = {
+  pronunciation: 'pronunciation',
+  vocabulary: 'vocabulary',
+  reading_blank: 'reading_blank'
 } as const
 
-export type QuizResult = (typeof QuizResult)[keyof typeof QuizResult]
+export type QuestionType = (typeof QuestionType)[keyof typeof QuestionType]

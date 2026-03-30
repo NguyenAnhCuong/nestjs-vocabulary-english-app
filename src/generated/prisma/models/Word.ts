@@ -14,7 +14,7 @@ import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
  * Model Word
- * Từ vựng trong kho hệ thống. Admin quản lý, user không sửa được.
+ * 
  */
 export type WordModel = runtime.Types.Result.DefaultSelection<Prisma.$WordPayload>
 
@@ -259,7 +259,6 @@ export type WordWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Word"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Word"> | Date | string
   favourites?: Prisma.FavouriteListRelationFilter
-  quizQuestions?: Prisma.QuizQuestionListRelationFilter
   wordProgress?: Prisma.WordProgressListRelationFilter
   wordTopics?: Prisma.WordTopicListRelationFilter
 }
@@ -281,7 +280,6 @@ export type WordOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   favourites?: Prisma.FavouriteOrderByRelationAggregateInput
-  quizQuestions?: Prisma.QuizQuestionOrderByRelationAggregateInput
   wordProgress?: Prisma.WordProgressOrderByRelationAggregateInput
   wordTopics?: Prisma.WordTopicOrderByRelationAggregateInput
 }
@@ -306,7 +304,6 @@ export type WordWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Word"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Word"> | Date | string
   favourites?: Prisma.FavouriteListRelationFilter
-  quizQuestions?: Prisma.QuizQuestionListRelationFilter
   wordProgress?: Prisma.WordProgressListRelationFilter
   wordTopics?: Prisma.WordTopicListRelationFilter
 }, "id" | "en">
@@ -370,7 +367,6 @@ export type WordCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   favourites?: Prisma.FavouriteCreateNestedManyWithoutWordInput
-  quizQuestions?: Prisma.QuizQuestionCreateNestedManyWithoutWordInput
   wordProgress?: Prisma.WordProgressCreateNestedManyWithoutWordInput
   wordTopics?: Prisma.WordTopicCreateNestedManyWithoutWordInput
 }
@@ -392,7 +388,6 @@ export type WordUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutWordInput
-  quizQuestions?: Prisma.QuizQuestionUncheckedCreateNestedManyWithoutWordInput
   wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutWordInput
   wordTopics?: Prisma.WordTopicUncheckedCreateNestedManyWithoutWordInput
 }
@@ -414,7 +409,6 @@ export type WordUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   favourites?: Prisma.FavouriteUpdateManyWithoutWordNestedInput
-  quizQuestions?: Prisma.QuizQuestionUpdateManyWithoutWordNestedInput
   wordProgress?: Prisma.WordProgressUpdateManyWithoutWordNestedInput
   wordTopics?: Prisma.WordTopicUpdateManyWithoutWordNestedInput
 }
@@ -436,7 +430,6 @@ export type WordUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutWordNestedInput
-  quizQuestions?: Prisma.QuizQuestionUncheckedUpdateManyWithoutWordNestedInput
   wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutWordNestedInput
   wordTopics?: Prisma.WordTopicUncheckedUpdateManyWithoutWordNestedInput
 }
@@ -624,22 +617,6 @@ export type WordUpdateOneWithoutFavouritesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.WordUpdateToOneWithWhereWithoutFavouritesInput, Prisma.WordUpdateWithoutFavouritesInput>, Prisma.WordUncheckedUpdateWithoutFavouritesInput>
 }
 
-export type WordCreateNestedOneWithoutQuizQuestionsInput = {
-  create?: Prisma.XOR<Prisma.WordCreateWithoutQuizQuestionsInput, Prisma.WordUncheckedCreateWithoutQuizQuestionsInput>
-  connectOrCreate?: Prisma.WordCreateOrConnectWithoutQuizQuestionsInput
-  connect?: Prisma.WordWhereUniqueInput
-}
-
-export type WordUpdateOneWithoutQuizQuestionsNestedInput = {
-  create?: Prisma.XOR<Prisma.WordCreateWithoutQuizQuestionsInput, Prisma.WordUncheckedCreateWithoutQuizQuestionsInput>
-  connectOrCreate?: Prisma.WordCreateOrConnectWithoutQuizQuestionsInput
-  upsert?: Prisma.WordUpsertWithoutQuizQuestionsInput
-  disconnect?: Prisma.WordWhereInput | boolean
-  delete?: Prisma.WordWhereInput | boolean
-  connect?: Prisma.WordWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.WordUpdateToOneWithWhereWithoutQuizQuestionsInput, Prisma.WordUpdateWithoutQuizQuestionsInput>, Prisma.WordUncheckedUpdateWithoutQuizQuestionsInput>
-}
-
 export type WordCreateWithoutWordTopicsInput = {
   id?: string
   en: string
@@ -657,7 +634,6 @@ export type WordCreateWithoutWordTopicsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   favourites?: Prisma.FavouriteCreateNestedManyWithoutWordInput
-  quizQuestions?: Prisma.QuizQuestionCreateNestedManyWithoutWordInput
   wordProgress?: Prisma.WordProgressCreateNestedManyWithoutWordInput
 }
 
@@ -678,7 +654,6 @@ export type WordUncheckedCreateWithoutWordTopicsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutWordInput
-  quizQuestions?: Prisma.QuizQuestionUncheckedCreateNestedManyWithoutWordInput
   wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutWordInput
 }
 
@@ -715,7 +690,6 @@ export type WordUpdateWithoutWordTopicsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   favourites?: Prisma.FavouriteUpdateManyWithoutWordNestedInput
-  quizQuestions?: Prisma.QuizQuestionUpdateManyWithoutWordNestedInput
   wordProgress?: Prisma.WordProgressUpdateManyWithoutWordNestedInput
 }
 
@@ -736,7 +710,6 @@ export type WordUncheckedUpdateWithoutWordTopicsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutWordNestedInput
-  quizQuestions?: Prisma.QuizQuestionUncheckedUpdateManyWithoutWordNestedInput
   wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutWordNestedInput
 }
 
@@ -757,7 +730,6 @@ export type WordCreateWithoutWordProgressInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   favourites?: Prisma.FavouriteCreateNestedManyWithoutWordInput
-  quizQuestions?: Prisma.QuizQuestionCreateNestedManyWithoutWordInput
   wordTopics?: Prisma.WordTopicCreateNestedManyWithoutWordInput
 }
 
@@ -778,7 +750,6 @@ export type WordUncheckedCreateWithoutWordProgressInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutWordInput
-  quizQuestions?: Prisma.QuizQuestionUncheckedCreateNestedManyWithoutWordInput
   wordTopics?: Prisma.WordTopicUncheckedCreateNestedManyWithoutWordInput
 }
 
@@ -815,7 +786,6 @@ export type WordUpdateWithoutWordProgressInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   favourites?: Prisma.FavouriteUpdateManyWithoutWordNestedInput
-  quizQuestions?: Prisma.QuizQuestionUpdateManyWithoutWordNestedInput
   wordTopics?: Prisma.WordTopicUpdateManyWithoutWordNestedInput
 }
 
@@ -836,7 +806,6 @@ export type WordUncheckedUpdateWithoutWordProgressInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutWordNestedInput
-  quizQuestions?: Prisma.QuizQuestionUncheckedUpdateManyWithoutWordNestedInput
   wordTopics?: Prisma.WordTopicUncheckedUpdateManyWithoutWordNestedInput
 }
 
@@ -856,7 +825,6 @@ export type WordCreateWithoutFavouritesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  quizQuestions?: Prisma.QuizQuestionCreateNestedManyWithoutWordInput
   wordProgress?: Prisma.WordProgressCreateNestedManyWithoutWordInput
   wordTopics?: Prisma.WordTopicCreateNestedManyWithoutWordInput
 }
@@ -877,7 +845,6 @@ export type WordUncheckedCreateWithoutFavouritesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  quizQuestions?: Prisma.QuizQuestionUncheckedCreateNestedManyWithoutWordInput
   wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutWordInput
   wordTopics?: Prisma.WordTopicUncheckedCreateNestedManyWithoutWordInput
 }
@@ -914,7 +881,6 @@ export type WordUpdateWithoutFavouritesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  quizQuestions?: Prisma.QuizQuestionUpdateManyWithoutWordNestedInput
   wordProgress?: Prisma.WordProgressUpdateManyWithoutWordNestedInput
   wordTopics?: Prisma.WordTopicUpdateManyWithoutWordNestedInput
 }
@@ -935,107 +901,6 @@ export type WordUncheckedUpdateWithoutFavouritesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  quizQuestions?: Prisma.QuizQuestionUncheckedUpdateManyWithoutWordNestedInput
-  wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutWordNestedInput
-  wordTopics?: Prisma.WordTopicUncheckedUpdateManyWithoutWordNestedInput
-}
-
-export type WordCreateWithoutQuizQuestionsInput = {
-  id?: string
-  en: string
-  phonetic?: string | null
-  type: $Enums.WordType
-  level: $Enums.CefrLevel
-  meaning: string
-  meaningEn?: string | null
-  example?: string | null
-  exampleVi?: string | null
-  audioUrl?: string | null
-  imageUrl?: string | null
-  tags?: Prisma.WordCreatetagsInput | string[]
-  isActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  favourites?: Prisma.FavouriteCreateNestedManyWithoutWordInput
-  wordProgress?: Prisma.WordProgressCreateNestedManyWithoutWordInput
-  wordTopics?: Prisma.WordTopicCreateNestedManyWithoutWordInput
-}
-
-export type WordUncheckedCreateWithoutQuizQuestionsInput = {
-  id?: string
-  en: string
-  phonetic?: string | null
-  type: $Enums.WordType
-  level: $Enums.CefrLevel
-  meaning: string
-  meaningEn?: string | null
-  example?: string | null
-  exampleVi?: string | null
-  audioUrl?: string | null
-  imageUrl?: string | null
-  tags?: Prisma.WordCreatetagsInput | string[]
-  isActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutWordInput
-  wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutWordInput
-  wordTopics?: Prisma.WordTopicUncheckedCreateNestedManyWithoutWordInput
-}
-
-export type WordCreateOrConnectWithoutQuizQuestionsInput = {
-  where: Prisma.WordWhereUniqueInput
-  create: Prisma.XOR<Prisma.WordCreateWithoutQuizQuestionsInput, Prisma.WordUncheckedCreateWithoutQuizQuestionsInput>
-}
-
-export type WordUpsertWithoutQuizQuestionsInput = {
-  update: Prisma.XOR<Prisma.WordUpdateWithoutQuizQuestionsInput, Prisma.WordUncheckedUpdateWithoutQuizQuestionsInput>
-  create: Prisma.XOR<Prisma.WordCreateWithoutQuizQuestionsInput, Prisma.WordUncheckedCreateWithoutQuizQuestionsInput>
-  where?: Prisma.WordWhereInput
-}
-
-export type WordUpdateToOneWithWhereWithoutQuizQuestionsInput = {
-  where?: Prisma.WordWhereInput
-  data: Prisma.XOR<Prisma.WordUpdateWithoutQuizQuestionsInput, Prisma.WordUncheckedUpdateWithoutQuizQuestionsInput>
-}
-
-export type WordUpdateWithoutQuizQuestionsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  en?: Prisma.StringFieldUpdateOperationsInput | string
-  phonetic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  type?: Prisma.EnumWordTypeFieldUpdateOperationsInput | $Enums.WordType
-  level?: Prisma.EnumCefrLevelFieldUpdateOperationsInput | $Enums.CefrLevel
-  meaning?: Prisma.StringFieldUpdateOperationsInput | string
-  meaningEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  example?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  exampleVi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audioUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tags?: Prisma.WordUpdatetagsInput | string[]
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  favourites?: Prisma.FavouriteUpdateManyWithoutWordNestedInput
-  wordProgress?: Prisma.WordProgressUpdateManyWithoutWordNestedInput
-  wordTopics?: Prisma.WordTopicUpdateManyWithoutWordNestedInput
-}
-
-export type WordUncheckedUpdateWithoutQuizQuestionsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  en?: Prisma.StringFieldUpdateOperationsInput | string
-  phonetic?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  type?: Prisma.EnumWordTypeFieldUpdateOperationsInput | $Enums.WordType
-  level?: Prisma.EnumCefrLevelFieldUpdateOperationsInput | $Enums.CefrLevel
-  meaning?: Prisma.StringFieldUpdateOperationsInput | string
-  meaningEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  example?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  exampleVi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  audioUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tags?: Prisma.WordUpdatetagsInput | string[]
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutWordNestedInput
   wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutWordNestedInput
   wordTopics?: Prisma.WordTopicUncheckedUpdateManyWithoutWordNestedInput
 }
@@ -1047,14 +912,12 @@ export type WordUncheckedUpdateWithoutQuizQuestionsInput = {
 
 export type WordCountOutputType = {
   favourites: number
-  quizQuestions: number
   wordProgress: number
   wordTopics: number
 }
 
 export type WordCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   favourites?: boolean | WordCountOutputTypeCountFavouritesArgs
-  quizQuestions?: boolean | WordCountOutputTypeCountQuizQuestionsArgs
   wordProgress?: boolean | WordCountOutputTypeCountWordProgressArgs
   wordTopics?: boolean | WordCountOutputTypeCountWordTopicsArgs
 }
@@ -1074,13 +937,6 @@ export type WordCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
  */
 export type WordCountOutputTypeCountFavouritesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.FavouriteWhereInput
-}
-
-/**
- * WordCountOutputType without action
- */
-export type WordCountOutputTypeCountQuizQuestionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.QuizQuestionWhereInput
 }
 
 /**
@@ -1115,7 +971,6 @@ export type WordSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   createdAt?: boolean
   updatedAt?: boolean
   favourites?: boolean | Prisma.Word$favouritesArgs<ExtArgs>
-  quizQuestions?: boolean | Prisma.Word$quizQuestionsArgs<ExtArgs>
   wordProgress?: boolean | Prisma.Word$wordProgressArgs<ExtArgs>
   wordTopics?: boolean | Prisma.Word$wordTopicsArgs<ExtArgs>
   _count?: boolean | Prisma.WordCountOutputTypeDefaultArgs<ExtArgs>
@@ -1178,7 +1033,6 @@ export type WordSelectScalar = {
 export type WordOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "en" | "phonetic" | "type" | "level" | "meaning" | "meaningEn" | "example" | "exampleVi" | "audioUrl" | "imageUrl" | "tags" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["word"]>
 export type WordInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   favourites?: boolean | Prisma.Word$favouritesArgs<ExtArgs>
-  quizQuestions?: boolean | Prisma.Word$quizQuestionsArgs<ExtArgs>
   wordProgress?: boolean | Prisma.Word$wordProgressArgs<ExtArgs>
   wordTopics?: boolean | Prisma.Word$wordTopicsArgs<ExtArgs>
   _count?: boolean | Prisma.WordCountOutputTypeDefaultArgs<ExtArgs>
@@ -1190,46 +1044,21 @@ export type $WordPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name: "Word"
   objects: {
     favourites: Prisma.$FavouritePayload<ExtArgs>[]
-    quizQuestions: Prisma.$QuizQuestionPayload<ExtArgs>[]
     wordProgress: Prisma.$WordProgressPayload<ExtArgs>[]
     wordTopics: Prisma.$WordTopicPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    /**
-     * Từ tiếng Anh (unique, không phân biệt hoa thường nên dùng index)
-     */
     en: string
     phonetic: string | null
     type: $Enums.WordType
     level: $Enums.CefrLevel
-    /**
-     * Nghĩa tiếng Việt chính
-     */
     meaning: string
-    /**
-     * Định nghĩa tiếng Anh
-     */
     meaningEn: string | null
-    /**
-     * Câu ví dụ tiếng Anh
-     */
     example: string | null
-    /**
-     * Dịch câu ví dụ sang tiếng Việt
-     */
     exampleVi: string | null
-    /**
-     * URL file audio phát âm
-     */
     audioUrl: string | null
-    /**
-     * Hình ảnh minh hoạ
-     */
     imageUrl: string | null
-    /**
-     * Tags tự do: ["formal","idiom","IELTS"]
-     */
     tags: string[]
     isActive: boolean
     createdAt: Date
@@ -1629,7 +1458,6 @@ readonly fields: WordFieldRefs;
 export interface Prisma__WordClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   favourites<T extends Prisma.Word$favouritesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Word$favouritesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FavouritePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  quizQuestions<T extends Prisma.Word$quizQuestionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Word$quizQuestionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$QuizQuestionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   wordProgress<T extends Prisma.Word$wordProgressArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Word$wordProgressArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WordProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   wordTopics<T extends Prisma.Word$wordTopicsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Word$wordTopicsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WordTopicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -2085,30 +1913,6 @@ export type Word$favouritesArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.FavouriteScalarFieldEnum | Prisma.FavouriteScalarFieldEnum[]
-}
-
-/**
- * Word.quizQuestions
- */
-export type Word$quizQuestionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the QuizQuestion
-   */
-  select?: Prisma.QuizQuestionSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the QuizQuestion
-   */
-  omit?: Prisma.QuizQuestionOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.QuizQuestionInclude<ExtArgs> | null
-  where?: Prisma.QuizQuestionWhereInput
-  orderBy?: Prisma.QuizQuestionOrderByWithRelationInput | Prisma.QuizQuestionOrderByWithRelationInput[]
-  cursor?: Prisma.QuizQuestionWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.QuizQuestionScalarFieldEnum | Prisma.QuizQuestionScalarFieldEnum[]
 }
 
 /**

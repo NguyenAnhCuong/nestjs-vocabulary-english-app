@@ -1,8 +1,7 @@
 // src/import-export/import-export.service.ts
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import type { IUser } from 'src/common/interfaces';
-import { WordType, CefrLevel } from '@prisma/client';
+import { WordType, CefrLevel } from '../generated/prisma/enums';
 
 interface WordRow {
   en: string;

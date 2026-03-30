@@ -13,7 +13,7 @@ import { CreateWordDto } from './dto/create-word.dto';
 import { UpdateWordDto } from './dto/update-word.dto';
 import { FilterWordDto } from './dto/update-word.dto';
 import { ResponseMessage, User } from 'src/decorator/customize';
-import { CefrLevel } from '@prisma/client';
+import { CefrLevel } from '../generated/prisma/enums';
 import { WordsService } from './words.service';
 import type { IUser } from 'src/common/interfaces';
 

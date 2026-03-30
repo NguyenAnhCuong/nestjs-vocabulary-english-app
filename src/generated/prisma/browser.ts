@@ -24,17 +24,17 @@ export * from './enums.js';
 export type User = Prisma.UserModel
 /**
  * Model LearningConfig
- * Cài đặt học tập & tuỳ chỉnh cá nhân của user
+ * 
  */
 export type LearningConfig = Prisma.LearningConfigModel
 /**
  * Model Topic
- * Chủ đề: Kinh doanh, Du lịch, Công nghệ, Y tế…
+ * 
  */
 export type Topic = Prisma.TopicModel
 /**
  * Model Word
- * Từ vựng trong kho hệ thống. Admin quản lý, user không sửa được.
+ * 
  */
 export type Word = Prisma.WordModel
 /**
@@ -44,45 +44,24 @@ export type Word = Prisma.WordModel
 export type WordTopic = Prisma.WordTopicModel
 /**
  * Model UserWord
- * Từ vựng do user tự ghi nhận — tách biệt khỏi kho hệ thống.
+ * 
  */
 export type UserWord = Prisma.UserWordModel
 /**
  * Model WordProgress
- * Ghi nhận tiến độ ghi nhớ của 1 user với 1 từ.
- * wordId XOR userWordId phải có giá trị (CHECK constraint nên thêm ở DB level).
+ * 
  */
 export type WordProgress = Prisma.WordProgressModel
 /**
  * Model Favourite
- * User đánh dấu ★ cho từ hệ thống HOẶC từ riêng của mình.
+ * 
  */
 export type Favourite = Prisma.FavouriteModel
 /**
  * Model StudySession
- * Mỗi ngày user học = 1 bản ghi. Dùng để tính streak liên tục.
+ * 
  */
 export type StudySession = Prisma.StudySessionModel
-/**
- * Model Quiz
- * Quiz tự động tạo hoặc admin thiết kế.
- */
-export type Quiz = Prisma.QuizModel
-/**
- * Model QuizQuestion
- * 
- */
-export type QuizQuestion = Prisma.QuizQuestionModel
-/**
- * Model QuizAttempt
- * 
- */
-export type QuizAttempt = Prisma.QuizAttemptModel
-/**
- * Model QuizAnswer
- * 
- */
-export type QuizAnswer = Prisma.QuizAnswerModel
 /**
  * Model UserGoal
  * 
@@ -98,3 +77,23 @@ export type Notification = Prisma.NotificationModel
  * 
  */
 export type ImportExport = Prisma.ImportExportModel
+/**
+ * Model Quiz
+ * Bài quiz (admin tạo)
+ */
+export type Quiz = Prisma.QuizModel
+/**
+ * Model QuizQuestion
+ * Câu hỏi trong quiz — 3 loại: phát âm | từ vựng | đọc hiểu
+ */
+export type QuizQuestion = Prisma.QuizQuestionModel
+/**
+ * Model ReadingBlank
+ * Chỗ trống trong câu đọc hiểu
+ */
+export type ReadingBlank = Prisma.ReadingBlankModel
+/**
+ * Model QuizAttempt
+ * Lượt làm bài của user
+ */
+export type QuizAttempt = Prisma.QuizAttemptModel

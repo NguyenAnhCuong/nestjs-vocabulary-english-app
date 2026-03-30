@@ -3,7 +3,7 @@ import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { WordProgressService, ReviewResultDto } from './word-progress.service';
 import { ResponseMessage, User } from 'src/decorator/customize';
 import { IsNumber, IsOptional, IsString, Max, Min } from 'class-validator';
-import { MemoryStatus } from '@prisma/client';
+import { MemoryStatus } from '../generated/prisma/enums';
 import type { IUser } from 'src/common/interfaces';
 
 class SubmitReviewDto implements ReviewResultDto {

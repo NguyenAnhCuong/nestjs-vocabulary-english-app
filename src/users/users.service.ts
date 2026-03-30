@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { compareSync, genSaltSync, hashSync } from 'bcrypt';
 import { IUser } from './users.controller';
-import { Role } from '@prisma/client';
+import { Role } from '../generated/prisma/enums';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 

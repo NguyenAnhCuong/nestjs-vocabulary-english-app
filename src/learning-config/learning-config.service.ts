@@ -1,9 +1,15 @@
 // src/learning-config/learning-config.service.ts
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { CefrLevel } from '@prisma/client';
+import { CefrLevel } from '../generated/prisma/enums';
 import {
-  IsBoolean, IsEnum, IsInt, IsOptional, IsString, Max, Min,
+  IsBoolean,
+  IsEnum,
+  IsInt,
+  IsOptional,
+  IsString,
+  Max,
+  Min,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 

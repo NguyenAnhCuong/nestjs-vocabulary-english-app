@@ -14,7 +14,7 @@ import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
  * Model UserWord
- * Từ vựng do user tự ghi nhận — tách biệt khỏi kho hệ thống.
+ * 
  */
 export type UserWordModel = runtime.Types.Result.DefaultSelection<Prisma.$UserWordPayload>
 
@@ -1151,13 +1151,7 @@ export type $UserWordPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     level: $Enums.CefrLevel
     meaning: string
     example: string | null
-    /**
-     * Ghi chú cá nhân: context gặp từ, cách nhớ…
-     */
     note: string | null
-    /**
-     * Nguồn: "Sách The Alchemist", "Podcast BBC"
-     */
     source: string | null
     imageUrl: string | null
     audioUrl: string | null

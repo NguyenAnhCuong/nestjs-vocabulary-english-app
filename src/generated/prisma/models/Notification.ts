@@ -620,17 +620,11 @@ export type $NotificationPayload<ExtArgs extends runtime.Types.Extensions.Intern
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     userId: string
-    /**
-     * "streak_reminder" | "quiz_available" | "goal_completed" | "level_up" | "review_due"
-     */
     type: string
     title: string
     body: string
     isRead: boolean
     readAt: Date | null
-    /**
-     * Metadata tuỳ loại: { quizId: "...", streak: 14, level: "B2" }
-     */
     metadata: runtime.JsonValue | null
     createdAt: Date
   }, ExtArgs["result"]["notification"]>

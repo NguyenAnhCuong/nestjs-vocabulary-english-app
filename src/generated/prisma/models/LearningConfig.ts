@@ -14,7 +14,7 @@ import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
  * Model LearningConfig
- * Cài đặt học tập & tuỳ chỉnh cá nhân của user
+ * 
  */
 export type LearningConfigModel = runtime.Types.Result.DefaultSelection<Prisma.$LearningConfigPayload>
 
@@ -686,33 +686,12 @@ export type $LearningConfigPayload<ExtArgs extends runtime.Types.Extensions.Inte
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     userId: string
-    /**
-     * Số từ mới muốn học mỗi ngày
-     */
     dailyNewWordTarget: number
-    /**
-     * Số phút học mỗi ngày
-     */
     dailyMinuteTarget: number
-    /**
-     * Cấp độ hiện tại của user
-     */
     currentLevel: $Enums.CefrLevel
-    /**
-     * Cấp độ mục tiêu
-     */
     targetLevel: $Enums.CefrLevel
-    /**
-     * Giờ nhắc nhở học (e.g. "08:00")
-     */
     reminderTime: string | null
-    /**
-     * Bật/tắt thông báo
-     */
     notificationsOn: boolean
-    /**
-     * Ngôn ngữ giao diện ("vi" | "en")
-     */
     uiLanguage: string
     createdAt: Date
     updatedAt: Date

@@ -1,9 +1,13 @@
 // src/words/dto/create-word.dto.ts
 import {
-  IsArray, IsBoolean, IsEnum, IsOptional,
-  IsString, MaxLength,
+  IsArray,
+  IsBoolean,
+  IsEnum,
+  IsOptional,
+  IsString,
+  MaxLength,
 } from 'class-validator';
-import { CefrLevel, WordType } from '@prisma/client';
+import { CefrLevel, WordType } from '../../generated/prisma/enums';
 
 export class CreateWordDto {
   @IsString()

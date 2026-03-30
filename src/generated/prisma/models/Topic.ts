@@ -14,7 +14,7 @@ import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
  * Model Topic
- * Chủ đề: Kinh doanh, Du lịch, Công nghệ, Y tế…
+ * 
  */
 export type TopicModel = runtime.Types.Result.DefaultSelection<Prisma.$TopicPayload>
 
@@ -656,9 +656,6 @@ export type $TopicPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     name: string
     nameEn: string | null
     emoji: string | null
-    /**
-     * Màu hex dùng cho UI card
-     */
     color: string | null
     description: string | null
     sortOrder: number

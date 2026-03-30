@@ -1,8 +1,7 @@
 // src/word-progress/word-progress.service.ts
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { IUser } from 'src/common/interfaces';
-import { MemoryStatus } from '@prisma/client';
+import { MemoryStatus } from '../generated/prisma/enums';
 
 export interface ReviewResultDto {
   /** 0=Blackout, 1=Wrong, 2=Hard, 3=Good, 4=Easy (SM-2 quality score) */

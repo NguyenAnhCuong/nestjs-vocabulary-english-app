@@ -709,17 +709,11 @@ export type $UserGoalPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     userId: string
-    /**
-     * "daily_words" | "daily_minutes" | "weekly_words" | "streak_days" | "level_up"
-     */
     goalType: string
     targetValue: number
     currentValue: number
     isCompleted: boolean
     completedAt: Date | null
-    /**
-     * Áp dụng cho goal theo ngày
-     */
     goalDate: Date | null
     createdAt: Date
     updatedAt: Date

@@ -4,7 +4,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateWordDto } from './dto/create-word.dto';
 import { UpdateWordDto } from './dto/update-word.dto';
 import { FilterWordDto } from './dto/update-word.dto';
-import { CefrLevel } from '@prisma/client';
+import { CefrLevel } from '../generated/prisma/enums';
 
 @Injectable()
 export class WordsService {
@@ -16,7 +16,8 @@ export class WordsService {
     const exists = await this.prisma.word.findUnique({
       where: { en: wordData.en },
     });
-    if (exists) throw new BadRequestException(`Từ "${wordData.en}" đã tồn tại!`);
+    if (exists)
+      throw new BadRequestException(`Từ "${wordData.en}" đã tồn tại!`);
 
     return this.prisma.word.create({
       data: {
@@ -50,7 +51,13 @@ export class WordsService {
         take: pageSize,
         orderBy: [{ level: 'asc' }, { en: 'asc' }],
         include: {
-          wordTopics: { include: { topic: { select: { id: true, name: true, emoji: true, color: true } } } },
+          wordTopics: {
+            include: {
+              topic: {
+                select: { id: true, name: true, emoji: true, color: true },
+              },
+            },
+          },
         },
       }),
     ]);
@@ -109,7 +116,9 @@ export class WordsService {
       where: { level, isActive: true },
       include: {
         _count: { select: { wordProgress: true } },
-        wordTopics: { include: { topic: { select: { name: true, emoji: true } } } },
+        wordTopics: {
+          include: { topic: { select: { name: true, emoji: true } } },
+        },
       },
       orderBy: { en: 'asc' },
     });

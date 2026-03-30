@@ -809,20 +809,6 @@ export type UserUpdateOneRequiredWithoutStudySessionsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutStudySessionsInput, Prisma.UserUpdateWithoutStudySessionsInput>, Prisma.UserUncheckedUpdateWithoutStudySessionsInput>
 }
 
-export type UserCreateNestedOneWithoutQuizAttemptsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutQuizAttemptsInput, Prisma.UserUncheckedCreateWithoutQuizAttemptsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutQuizAttemptsInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutQuizAttemptsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutQuizAttemptsInput, Prisma.UserUncheckedCreateWithoutQuizAttemptsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutQuizAttemptsInput
-  upsert?: Prisma.UserUpsertWithoutQuizAttemptsInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutQuizAttemptsInput, Prisma.UserUpdateWithoutQuizAttemptsInput>, Prisma.UserUncheckedUpdateWithoutQuizAttemptsInput>
-}
-
 export type UserCreateNestedOneWithoutGoalsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutGoalsInput, Prisma.UserUncheckedCreateWithoutGoalsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutGoalsInput
@@ -863,6 +849,20 @@ export type UserUpdateOneRequiredWithoutImportExportsNestedInput = {
   upsert?: Prisma.UserUpsertWithoutImportExportsInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutImportExportsInput, Prisma.UserUpdateWithoutImportExportsInput>, Prisma.UserUncheckedUpdateWithoutImportExportsInput>
+}
+
+export type UserCreateNestedOneWithoutQuizAttemptsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutQuizAttemptsInput, Prisma.UserUncheckedCreateWithoutQuizAttemptsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutQuizAttemptsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutQuizAttemptsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutQuizAttemptsInput, Prisma.UserUncheckedCreateWithoutQuizAttemptsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutQuizAttemptsInput
+  upsert?: Prisma.UserUpsertWithoutQuizAttemptsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutQuizAttemptsInput, Prisma.UserUpdateWithoutQuizAttemptsInput>, Prisma.UserUncheckedUpdateWithoutQuizAttemptsInput>
 }
 
 export type UserCreateWithoutLearningConfigInput = {
@@ -1545,142 +1545,6 @@ export type UserUncheckedUpdateWithoutStudySessionsInput = {
   wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutUserNestedInput
 }
 
-export type UserCreateWithoutQuizAttemptsInput = {
-  id?: string
-  name?: string | null
-  email: string
-  gender?: string | null
-  age?: number | null
-  address?: string | null
-  refreshToken?: string | null
-  role?: $Enums.Role
-  createdBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  updatedBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  deletedBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  isDeleted?: boolean
-  deletedAt?: Date | string | null
-  password?: string | null
-  googleId?: string | null
-  avatarUrl?: string | null
-  provider?: string
-  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
-  importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
-  learningConfig?: Prisma.LearningConfigCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
-  userWords?: Prisma.UserWordCreateNestedManyWithoutUserInput
-  wordProgress?: Prisma.WordProgressCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutQuizAttemptsInput = {
-  id?: string
-  name?: string | null
-  email: string
-  gender?: string | null
-  age?: number | null
-  address?: string | null
-  refreshToken?: string | null
-  role?: $Enums.Role
-  createdBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  updatedBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  deletedBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  isDeleted?: boolean
-  deletedAt?: Date | string | null
-  password?: string | null
-  googleId?: string | null
-  avatarUrl?: string | null
-  provider?: string
-  favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
-  importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
-  learningConfig?: Prisma.LearningConfigUncheckedCreateNestedOneWithoutUserInput
-  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
-  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
-  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
-  userWords?: Prisma.UserWordUncheckedCreateNestedManyWithoutUserInput
-  wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutQuizAttemptsInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutQuizAttemptsInput, Prisma.UserUncheckedCreateWithoutQuizAttemptsInput>
-}
-
-export type UserUpsertWithoutQuizAttemptsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutQuizAttemptsInput, Prisma.UserUncheckedUpdateWithoutQuizAttemptsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutQuizAttemptsInput, Prisma.UserUncheckedCreateWithoutQuizAttemptsInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutQuizAttemptsInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutQuizAttemptsInput, Prisma.UserUncheckedUpdateWithoutQuizAttemptsInput>
-}
-
-export type UserUpdateWithoutQuizAttemptsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  createdBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  updatedBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  deletedBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  provider?: Prisma.StringFieldUpdateOperationsInput | string
-  favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
-  importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
-  learningConfig?: Prisma.LearningConfigUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
-  userWords?: Prisma.UserWordUpdateManyWithoutUserNestedInput
-  wordProgress?: Prisma.WordProgressUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutQuizAttemptsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  createdBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  updatedBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  deletedBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  provider?: Prisma.StringFieldUpdateOperationsInput | string
-  favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
-  importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
-  learningConfig?: Prisma.LearningConfigUncheckedUpdateOneWithoutUserNestedInput
-  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
-  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
-  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
-  userWords?: Prisma.UserWordUncheckedUpdateManyWithoutUserNestedInput
-  wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutUserNestedInput
-}
-
 export type UserCreateWithoutGoalsInput = {
   id?: string
   name?: string | null
@@ -2083,6 +1947,142 @@ export type UserUncheckedUpdateWithoutImportExportsInput = {
   learningConfig?: Prisma.LearningConfigUncheckedUpdateOneWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   quizAttempts?: Prisma.QuizAttemptUncheckedUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
+  userWords?: Prisma.UserWordUncheckedUpdateManyWithoutUserNestedInput
+  wordProgress?: Prisma.WordProgressUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutQuizAttemptsInput = {
+  id?: string
+  name?: string | null
+  email: string
+  gender?: string | null
+  age?: number | null
+  address?: string | null
+  refreshToken?: string | null
+  role?: $Enums.Role
+  createdBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  updatedBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  deletedBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  password?: string | null
+  googleId?: string | null
+  avatarUrl?: string | null
+  provider?: string
+  favourites?: Prisma.FavouriteCreateNestedManyWithoutUserInput
+  importExports?: Prisma.ImportExportCreateNestedManyWithoutUserInput
+  learningConfig?: Prisma.LearningConfigCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalCreateNestedManyWithoutUserInput
+  userWords?: Prisma.UserWordCreateNestedManyWithoutUserInput
+  wordProgress?: Prisma.WordProgressCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutQuizAttemptsInput = {
+  id?: string
+  name?: string | null
+  email: string
+  gender?: string | null
+  age?: number | null
+  address?: string | null
+  refreshToken?: string | null
+  role?: $Enums.Role
+  createdBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  updatedBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  deletedBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  password?: string | null
+  googleId?: string | null
+  avatarUrl?: string | null
+  provider?: string
+  favourites?: Prisma.FavouriteUncheckedCreateNestedManyWithoutUserInput
+  importExports?: Prisma.ImportExportUncheckedCreateNestedManyWithoutUserInput
+  learningConfig?: Prisma.LearningConfigUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  studySessions?: Prisma.StudySessionUncheckedCreateNestedManyWithoutUserInput
+  goals?: Prisma.UserGoalUncheckedCreateNestedManyWithoutUserInput
+  userWords?: Prisma.UserWordUncheckedCreateNestedManyWithoutUserInput
+  wordProgress?: Prisma.WordProgressUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutQuizAttemptsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutQuizAttemptsInput, Prisma.UserUncheckedCreateWithoutQuizAttemptsInput>
+}
+
+export type UserUpsertWithoutQuizAttemptsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutQuizAttemptsInput, Prisma.UserUncheckedUpdateWithoutQuizAttemptsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutQuizAttemptsInput, Prisma.UserUncheckedCreateWithoutQuizAttemptsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutQuizAttemptsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutQuizAttemptsInput, Prisma.UserUncheckedUpdateWithoutQuizAttemptsInput>
+}
+
+export type UserUpdateWithoutQuizAttemptsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  updatedBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  deletedBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  favourites?: Prisma.FavouriteUpdateManyWithoutUserNestedInput
+  importExports?: Prisma.ImportExportUpdateManyWithoutUserNestedInput
+  learningConfig?: Prisma.LearningConfigUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  studySessions?: Prisma.StudySessionUpdateManyWithoutUserNestedInput
+  goals?: Prisma.UserGoalUpdateManyWithoutUserNestedInput
+  userWords?: Prisma.UserWordUpdateManyWithoutUserNestedInput
+  wordProgress?: Prisma.WordProgressUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutQuizAttemptsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  updatedBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  deletedBy?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  favourites?: Prisma.FavouriteUncheckedUpdateManyWithoutUserNestedInput
+  importExports?: Prisma.ImportExportUncheckedUpdateManyWithoutUserNestedInput
+  learningConfig?: Prisma.LearningConfigUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   studySessions?: Prisma.StudySessionUncheckedUpdateManyWithoutUserNestedInput
   goals?: Prisma.UserGoalUncheckedUpdateManyWithoutUserNestedInput
   userWords?: Prisma.UserWordUncheckedUpdateManyWithoutUserNestedInput

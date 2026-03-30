@@ -58,13 +58,13 @@ export const ModelName = {
   WordProgress: 'WordProgress',
   Favourite: 'Favourite',
   StudySession: 'StudySession',
-  Quiz: 'Quiz',
-  QuizQuestion: 'QuizQuestion',
-  QuizAttempt: 'QuizAttempt',
-  QuizAnswer: 'QuizAnswer',
   UserGoal: 'UserGoal',
   Notification: 'Notification',
-  ImportExport: 'ImportExport'
+  ImportExport: 'ImportExport',
+  Quiz: 'Quiz',
+  QuizQuestion: 'QuizQuestion',
+  ReadingBlank: 'ReadingBlank',
+  QuizAttempt: 'QuizAttempt'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -239,63 +239,6 @@ export const StudySessionScalarFieldEnum = {
 export type StudySessionScalarFieldEnum = (typeof StudySessionScalarFieldEnum)[keyof typeof StudySessionScalarFieldEnum]
 
 
-export const QuizScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  description: 'description',
-  level: 'level',
-  topicId: 'topicId',
-  totalPoints: 'totalPoints',
-  isPublished: 'isPublished',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type QuizScalarFieldEnum = (typeof QuizScalarFieldEnum)[keyof typeof QuizScalarFieldEnum]
-
-
-export const QuizQuestionScalarFieldEnum = {
-  id: 'id',
-  quizId: 'quizId',
-  wordId: 'wordId',
-  questionText: 'questionText',
-  questionType: 'questionType',
-  options: 'options',
-  answer: 'answer',
-  points: 'points',
-  sortOrder: 'sortOrder'
-} as const
-
-export type QuizQuestionScalarFieldEnum = (typeof QuizQuestionScalarFieldEnum)[keyof typeof QuizQuestionScalarFieldEnum]
-
-
-export const QuizAttemptScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  quizId: 'quizId',
-  score: 'score',
-  totalPoints: 'totalPoints',
-  timeTaken: 'timeTaken',
-  completedAt: 'completedAt',
-  createdAt: 'createdAt'
-} as const
-
-export type QuizAttemptScalarFieldEnum = (typeof QuizAttemptScalarFieldEnum)[keyof typeof QuizAttemptScalarFieldEnum]
-
-
-export const QuizAnswerScalarFieldEnum = {
-  id: 'id',
-  attemptId: 'attemptId',
-  questionId: 'questionId',
-  userAnswer: 'userAnswer',
-  result: 'result',
-  pointsEarned: 'pointsEarned',
-  answeredAt: 'answeredAt'
-} as const
-
-export type QuizAnswerScalarFieldEnum = (typeof QuizAnswerScalarFieldEnum)[keyof typeof QuizAnswerScalarFieldEnum]
-
-
 export const UserGoalScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -342,6 +285,65 @@ export const ImportExportScalarFieldEnum = {
 export type ImportExportScalarFieldEnum = (typeof ImportExportScalarFieldEnum)[keyof typeof ImportExportScalarFieldEnum]
 
 
+export const QuizScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  level: 'level',
+  durationMinutes: 'durationMinutes',
+  totalQuestions: 'totalQuestions',
+  tags: 'tags',
+  isPublished: 'isPublished',
+  createdBy: 'createdBy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type QuizScalarFieldEnum = (typeof QuizScalarFieldEnum)[keyof typeof QuizScalarFieldEnum]
+
+
+export const QuizQuestionScalarFieldEnum = {
+  id: 'id',
+  quizId: 'quizId',
+  type: 'type',
+  order: 'order',
+  question: 'question',
+  passage: 'passage',
+  options: 'options',
+  answer: 'answer',
+  explanation: 'explanation',
+  meta: 'meta',
+  createdAt: 'createdAt'
+} as const
+
+export type QuizQuestionScalarFieldEnum = (typeof QuizQuestionScalarFieldEnum)[keyof typeof QuizQuestionScalarFieldEnum]
+
+
+export const ReadingBlankScalarFieldEnum = {
+  id: 'id',
+  questionId: 'questionId',
+  label: 'label',
+  options: 'options',
+  answer: 'answer',
+  order: 'order'
+} as const
+
+export type ReadingBlankScalarFieldEnum = (typeof ReadingBlankScalarFieldEnum)[keyof typeof ReadingBlankScalarFieldEnum]
+
+
+export const QuizAttemptScalarFieldEnum = {
+  id: 'id',
+  quizId: 'quizId',
+  userId: 'userId',
+  answers: 'answers',
+  score: 'score',
+  timeTakenSeconds: 'timeTakenSeconds',
+  submittedAt: 'submittedAt'
+} as const
+
+export type QuizAttemptScalarFieldEnum = (typeof QuizAttemptScalarFieldEnum)[keyof typeof QuizAttemptScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -356,6 +358,13 @@ export const NullableJsonNullValueInput = {
 } as const
 
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {

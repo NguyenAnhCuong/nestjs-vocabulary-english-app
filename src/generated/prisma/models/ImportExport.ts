@@ -670,19 +670,10 @@ export type $ImportExportPayload<ExtArgs extends runtime.Types.Extensions.Intern
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     userId: string
-    /**
-     * "import" | "export"
-     */
     direction: string
-    /**
-     * "csv" | "json" | "anki"
-     */
     format: string
     fileName: string | null
     wordCount: number
-    /**
-     * "pending" | "processing" | "done" | "failed"
-     */
     status: string
     errorLog: string | null
     createdAt: Date

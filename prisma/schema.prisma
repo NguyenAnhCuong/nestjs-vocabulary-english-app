@@ -9,6 +9,58 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ENUMS
+// ─────────────────────────────────────────────────────────────────────────────
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum CefrLevel {
+  A1
+  A2
+  B1
+  B2
+  C1
+  C2
+}
+
+enum WordType {
+  NOUN
+  VERB
+  ADJECTIVE
+  ADVERB
+  PHRASE
+  CONJUNCTION
+  PREPOSITION
+  PRONOUN
+}
+
+enum LearningSource {
+  SYSTEM
+  MANUAL
+  IMPORT
+}
+
+enum MemoryStatus {
+  NEW
+  LEARNING
+  REVIEWING
+  MASTERED
+}
+
+// ✅ XOÁ enum QuizResult — không còn dùng (QuizAnswer model đã bỏ)
+
+enum QuestionType {
+  pronunciation
+  vocabulary
+  reading_blank
+}
+
+
 model User {
   id             String          @id @default(uuid())
   name           String?
@@ -42,23 +94,15 @@ model User {
   @@map("users")
 }
 
-/// Cài đặt học tập & tuỳ chỉnh cá nhân của user
 model LearningConfig {
   id                 String    @id @default(uuid())
   userId             String    @unique
-  /// Số từ mới muốn học mỗi ngày
   dailyNewWordTarget Int       @default(10)
-  /// Số phút học mỗi ngày
   dailyMinuteTarget  Int       @default(30)
-  /// Cấp độ hiện tại của user
   currentLevel       CefrLevel @default(A1)
-  /// Cấp độ mục tiêu
   targetLevel        CefrLevel @default(B2)
-  /// Giờ nhắc nhở học (e.g. "08:00")
   reminderTime       String?
-  /// Bật/tắt thông báo
   notificationsOn    Boolean   @default(true)
-  /// Ngôn ngữ giao diện ("vi" | "en")
   uiLanguage         String    @default("vi")
   createdAt          DateTime  @default(now())
   updatedAt          DateTime  @updatedAt
@@ -67,13 +111,11 @@ model LearningConfig {
   @@map("learning_configs")
 }
 
-/// Chủ đề: Kinh doanh, Du lịch, Công nghệ, Y tế…
 model Topic {
   id          String      @id @default(uuid())
   name        String      @unique
   nameEn      String?
   emoji       String?
-  /// Màu hex dùng cho UI card
   color       String?
   description String?
   sortOrder   Int         @default(0)
@@ -85,35 +127,26 @@ model Topic {
   @@map("topics")
 }
 
-/// Từ vựng trong kho hệ thống. Admin quản lý, user không sửa được.
 model Word {
-  id            String         @id @default(uuid())
-  /// Từ tiếng Anh (unique, không phân biệt hoa thường nên dùng index)
-  en            String         @unique
-  phonetic      String?
-  type          WordType
-  level         CefrLevel
-  /// Nghĩa tiếng Việt chính
-  meaning       String
-  /// Định nghĩa tiếng Anh
-  meaningEn     String?
-  /// Câu ví dụ tiếng Anh
-  example       String?
-  /// Dịch câu ví dụ sang tiếng Việt
-  exampleVi     String?
-  /// URL file audio phát âm
-  audioUrl      String?
-  /// Hình ảnh minh hoạ
-  imageUrl      String?
-  /// Tags tự do: ["formal","idiom","IELTS"]
-  tags          String[]
-  isActive      Boolean        @default(true)
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
-  favourites    Favourite[]
-  quizQuestions QuizQuestion[]
-  wordProgress  WordProgress[]
-  wordTopics    WordTopic[]
+  id           String         @id @default(uuid())
+  en           String         @unique
+  phonetic     String?
+  type         WordType
+  level        CefrLevel
+  meaning      String
+  meaningEn    String?
+  example      String?
+  exampleVi    String?
+  audioUrl     String?
+  imageUrl     String?
+  tags         String[]
+  isActive     Boolean        @default(true)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  favourites   Favourite[]
+  // ✅ XOÁ quan hệ quizQuestions — QuizQuestion mới không có wordId
+  wordProgress WordProgress[]
+  wordTopics   WordTopic[]
 
   @@index([level])
   @@index([type])
@@ -130,7 +163,6 @@ model WordTopic {
   @@map("word_topics")
 }
 
-/// Từ vựng do user tự ghi nhận — tách biệt khỏi kho hệ thống.
 model UserWord {
   id           String        @id @default(uuid())
   userId       String
@@ -140,9 +172,7 @@ model UserWord {
   level        CefrLevel     @default(B1)
   meaning      String
   example      String?
-  /// Ghi chú cá nhân: context gặp từ, cách nhớ…
   note         String?
-  /// Nguồn: "Sách The Alchemist", "Podcast BBC"
   source       String?
   imageUrl     String?
   audioUrl     String?
@@ -158,30 +188,19 @@ model UserWord {
   @@map("user_words")
 }
 
-/// Ghi nhận tiến độ ghi nhớ của 1 user với 1 từ.
-/// wordId XOR userWordId phải có giá trị (CHECK constraint nên thêm ở DB level).
 model WordProgress {
   id             String         @id @default(uuid())
   userId         String
-  /// Từ hệ thống — nullable (chỉ 1 trong 2 có giá trị)
   wordId         String?
-  /// Từ riêng của user — nullable
   userWordId     String?        @unique
   source         LearningSource @default(SYSTEM)
   status         MemoryStatus   @default(NEW)
-  /// Số lần ôn tập thành công liên tiếp
   repetitions    Int            @default(0)
-  /// Easiness Factor — độ dễ ghi nhớ (2.5 = trung bình, tăng khi trả lời đúng)
   easeFactor     Float          @default(2.5)
-  /// Khoảng cách ngày đến lần ôn tiếp theo
   intervalDays   Int            @default(1)
-  /// Timestamp lần ôn tập tiếp theo (để query "từ cần ôn hôm nay")
   nextReviewAt   DateTime       @default(now())
-  /// Tổng số lần trả lời đúng
   correctCount   Int            @default(0)
-  /// Tổng số lần trả lời sai
   wrongCount     Int            @default(0)
-  /// Lần cuối ôn tập
   lastReviewedAt DateTime?
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
@@ -195,13 +214,10 @@ model WordProgress {
   @@map("word_progress")
 }
 
-/// User đánh dấu ★ cho từ hệ thống HOẶC từ riêng của mình.
 model Favourite {
   id         String    @id @default(uuid())
   userId     String
-  /// Từ hệ thống (nullable — chỉ 1 trong 2 field có giá trị)
   wordId     String?
-  /// Từ riêng của user (nullable)
   userWordId String?
   createdAt  DateTime  @default(now())
   user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -213,19 +229,13 @@ model Favourite {
   @@map("favourites")
 }
 
-/// Mỗi ngày user học = 1 bản ghi. Dùng để tính streak liên tục.
 model StudySession {
   id            String   @id @default(uuid())
   userId        String
-  /// Chỉ lưu date (không có time) — group by ngày dễ hơn
   studyDate     DateTime @db.Date
-  /// Tổng thời gian học trong ngày (giây)
   durationSecs  Int      @default(0)
-  /// Số từ mới học
   newWordsCount Int      @default(0)
-  /// Số từ đã ôn
   reviewCount   Int      @default(0)
-  /// XP kiếm được trong ngày
   xpEarned      Int      @default(0)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
@@ -236,88 +246,14 @@ model StudySession {
   @@map("study_sessions")
 }
 
-/// Quiz tự động tạo hoặc admin thiết kế.
-model Quiz {
-  id          String         @id @default(uuid())
-  title       String
-  description String?
-  /// Filter quiz theo cấp độ
-  level       CefrLevel?
-  /// Filter quiz theo chủ đề (lưu ID, không FK để linh hoạt)
-  topicId     String?
-  totalPoints Int            @default(0)
-  isPublished Boolean        @default(false)
-  createdAt   DateTime       @default(now())
-  updatedAt   DateTime       @updatedAt
-  attempts    QuizAttempt[]
-  questions   QuizQuestion[]
-
-  @@map("quizzes")
-}
-
-model QuizQuestion {
-  id           String       @id @default(uuid())
-  quizId       String
-  /// Từ được dùng để ra câu hỏi (nullable — có thể câu hỏi không gắn với từ cụ thể)
-  wordId       String?
-  questionText String
-  /// "multiple_choice" | "fill_blank" | "listening" | "matching" | "true_false"
-  questionType String       @default("multiple_choice")
-  /// JSON: [{ "id": "a", "text": "...", "isCorrect": true }, ...]
-  options      Json?
-  /// Đáp án đúng
-  answer       String
-  points       Int          @default(1)
-  sortOrder    Int          @default(0)
-  answers      QuizAnswer[]
-  quiz         Quiz         @relation(fields: [quizId], references: [id], onDelete: Cascade)
-  word         Word?        @relation(fields: [wordId], references: [id])
-
-  @@map("quiz_questions")
-}
-
-model QuizAttempt {
-  id          String       @id @default(uuid())
-  userId      String
-  quizId      String
-  score       Int          @default(0)
-  totalPoints Int          @default(0)
-  /// Thời gian hoàn thành (giây)
-  timeTaken   Int?
-  completedAt DateTime?
-  createdAt   DateTime     @default(now())
-  answers     QuizAnswer[]
-  quiz        Quiz         @relation(fields: [quizId], references: [id], onDelete: Cascade)
-  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId, quizId])
-  @@map("quiz_attempts")
-}
-
-model QuizAnswer {
-  id           String       @id @default(uuid())
-  attemptId    String
-  questionId   String
-  userAnswer   String?
-  result       QuizResult   @default(SKIPPED)
-  pointsEarned Int          @default(0)
-  answeredAt   DateTime     @default(now())
-  attempt      QuizAttempt  @relation(fields: [attemptId], references: [id], onDelete: Cascade)
-  question     QuizQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
-
-  @@map("quiz_answers")
-}
-
 model UserGoal {
   id           String    @id @default(uuid())
   userId       String
-  /// "daily_words" | "daily_minutes" | "weekly_words" | "streak_days" | "level_up"
   goalType     String
   targetValue  Int
   currentValue Int       @default(0)
   isCompleted  Boolean   @default(false)
   completedAt  DateTime?
-  /// Áp dụng cho goal theo ngày
   goalDate     DateTime? @db.Date
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
@@ -330,13 +266,11 @@ model UserGoal {
 model Notification {
   id        String    @id @default(uuid())
   userId    String
-  /// "streak_reminder" | "quiz_available" | "goal_completed" | "level_up" | "review_due"
   type      String
   title     String
   body      String
   isRead    Boolean   @default(false)
   readAt    DateTime?
-  /// Metadata tuỳ loại: { quizId: "...", streak: 14, level: "B2" }
   metadata  Json?
   createdAt DateTime  @default(now())
   user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -348,13 +282,10 @@ model Notification {
 model ImportExport {
   id        String   @id @default(uuid())
   userId    String
-  /// "import" | "export"
   direction String
-  /// "csv" | "json" | "anki"
   format    String
   fileName  String?
   wordCount Int      @default(0)
-  /// "pending" | "processing" | "done" | "failed"
   status    String   @default("pending")
   errorLog  String?
   createdAt DateTime @default(now())
@@ -363,51 +294,91 @@ model ImportExport {
   @@map("import_exports")
 }
 
-enum Role {
-  USER
-  ADMIN
+// ─────────────────────────────────────────────────────────────────────────────
+// QUIZ SYSTEM
+// ─────────────────────────────────────────────────────────────────────────────
+
+/// Bài quiz (admin tạo)
+model Quiz {
+  id              String    @id @default(uuid())
+  title           String
+  description     String    @default("")
+  level           CefrLevel
+  durationMinutes Int       @default(30)
+  totalQuestions  Int       @default(21)
+  tags            String[]  @default([])
+  isPublished     Boolean   @default(false)
+  /// ✅ String? — nullable vì seed chạy không có user
+  createdBy       String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  questions QuizQuestion[]
+  attempts  QuizAttempt[]
+
+  @@index([level])
+  @@index([isPublished])
+  @@map("quizzes")
 }
 
-/// Khung tham chiếu châu Âu: A1 (sơ cấp) → C2 (thành thạo)
-enum CefrLevel {
-  A1
-  A2
-  B1
-  B2
-  C1
-  C2
+/// Câu hỏi trong quiz — 3 loại: phát âm | từ vựng | đọc hiểu
+model QuizQuestion {
+  id          String       @id @default(uuid())
+  quizId      String
+  type        QuestionType
+  order       Int
+  question    String
+  /// Chỉ dùng cho reading_blank: đoạn văn có [BLANK1], [BLANK2]…
+  passage     String?
+  /// Pronunciation & vocabulary: 4 options; reading_blank: []
+  options     String[]     @default([])
+  /// Pronunciation & vocabulary: đáp án đúng; reading_blank: ""
+  answer      String       @default("")
+  explanation String       @default("")
+  /// Metadata: { phonetics: ["/beər/",...] } hoặc { title: "Bài đọc:..." }
+  meta        Json?
+  createdAt   DateTime     @default(now())
+
+  quiz   Quiz          @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  blanks ReadingBlank[]
+
+  @@index([quizId])
+  @@index([quizId, type])
+  @@map("quiz_questions")
 }
 
-/// Loại từ tiếng Anh
-enum WordType {
-  NOUN
-  VERB
-  ADJECTIVE
-  ADVERB
-  PHRASE
-  CONJUNCTION
-  PREPOSITION
-  PRONOUN
+/// Chỗ trống trong câu đọc hiểu
+model ReadingBlank {
+  id         String   @id @default(uuid())
+  questionId String
+  label      String
+  options    String[]
+  answer     String
+  order      Int
+
+  question QuizQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@index([questionId])
+  @@map("reading_blanks")
 }
 
-/// Nguồn từ học được
-enum LearningSource {
-  SYSTEM
-  MANUAL
-  IMPORT
-}
+/// Lượt làm bài của user
+model QuizAttempt {
+  id               String   @id @default(uuid())
+  quizId           String
+  userId           String
+  /// Map: questionId | blankId → đáp án user chọn
+  answers          Json
+  /// QuizScore object (khớp với frontend type)
+  score            Json
+  timeTakenSeconds Int      @default(0)
+  submittedAt      DateTime @default(now())
 
-/// Trạng thái ghi nhớ (SM-2 spaced repetition)
-enum MemoryStatus {
-  NEW
-  LEARNING
-  REVIEWING
-  MASTERED
-}
+  quiz Quiz @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-/// Kết quả trả lời quiz
-enum QuizResult {
-  CORRECT
-  INCORRECT
-  SKIPPED
+  @@index([quizId])
+  @@index([userId])
+  @@index([quizId, userId])
+  @@map("quiz_attempts")
 }
