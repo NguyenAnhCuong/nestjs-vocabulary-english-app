@@ -1,9 +1,5 @@
 // src/quizzes/quizzes.service.ts
-import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import {
   CreateQuizDto,
@@ -13,10 +9,19 @@ import {
 } from './dto/create-quiz.dto';
 import type { IUser } from 'src/common/interfaces';
 
+const GRADE_LABELS: Record<string, string> = {
+  S: 'Xuất sắc 🏆',
+  A: 'Giỏi 🎉',
+  B: 'Khá tốt 👍',
+  C: 'Trung bình 🙂',
+  F: 'Cần cố gắng 💪',
+};
+
 @Injectable()
 export class QuizzesService {
   constructor(private prisma: PrismaService) {}
 
+  // ── Create ──────────────────────────────────────────────────────────────────
   async create(dto: CreateQuizDto, user?: IUser) {
     const {
       pronunciationQuestions,
@@ -97,6 +102,7 @@ export class QuizzesService {
     });
   }
 
+  // ── Find all ────────────────────────────────────────────────────────────────
   async findAll(filter: FilterQuizDto = {}) {
     const { current = 1, pageSize = 6, level, search, isPublished } = filter;
     const skip = (current - 1) * pageSize;
@@ -156,6 +162,7 @@ export class QuizzesService {
     };
   }
 
+  // ── Find one ────────────────────────────────────────────────────────────────
   async findOne(id: string) {
     const quiz = await this.prisma.quiz.findUnique({
       where: { id },
@@ -217,6 +224,7 @@ export class QuizzesService {
     };
   }
 
+  // ── Update ──────────────────────────────────────────────────────────────────
   async update(id: string, dto: UpdateQuizDto) {
     await this.findOne(id);
     const {
@@ -232,11 +240,13 @@ export class QuizzesService {
     });
   }
 
+  // ── Delete ──────────────────────────────────────────────────────────────────
   async remove(id: string) {
     await this.findOne(id);
     return this.prisma.quiz.delete({ where: { id } });
   }
 
+  // ── Toggle publish ──────────────────────────────────────────────────────────
   async togglePublish(id: string) {
     const quiz = await this.prisma.quiz.findUnique({
       where: { id },
@@ -250,8 +260,18 @@ export class QuizzesService {
     });
   }
 
-  async submitAttempt(dto: SubmitAttemptDto, userId: string) {
+  // ── Submit & grade ──────────────────────────────────────────────────────────
+  async submitAttempt(
+    dto: SubmitAttemptDto & { quizId: string },
+    userId: string,
+  ) {
     const { quizId, answers, timeTakenSeconds } = dto;
+
+    // ✅ Guard: answers phải là object hợp lệ
+    if (!answers || typeof answers !== 'object') {
+      throw new Error('answers is required and must be an object');
+    }
+
     const quiz = await this.prisma.quiz.findUnique({
       where: { id: quizId },
       include: {
@@ -267,6 +287,7 @@ export class QuizzesService {
     let pronCorrect = 0,
       vocabCorrect = 0,
       readingCorrect = 0;
+
     pronQ.forEach((q) => {
       if (answers[q.id] === q.answer) pronCorrect++;
     });
@@ -284,7 +305,9 @@ export class QuizzesService {
       totalQuestions > 0
         ? Math.round((totalCorrect / totalQuestions) * 100)
         : 0;
-    const grade =
+
+    // ✅ Grade as explicit string key
+    const grade: 'S' | 'A' | 'B' | 'C' | 'F' =
       percentScore >= 90
         ? 'S'
         : percentScore >= 80
@@ -300,13 +323,7 @@ export class QuizzesService {
       totalQuestions,
       percentScore,
       grade,
-      gradeLabel: {
-        S: 'Xuất sắc 🏆',
-        A: 'Giỏi 🎉',
-        B: 'Khá tốt 👍',
-        C: 'Trung bình 🙂',
-        F: 'Cần cố gắng 💪',
-      }[grade],
+      gradeLabel: GRADE_LABELS[grade], // ✅ dùng Record thay vì object literal indexing
       timeTakenSeconds,
       sections: [
         {
@@ -331,11 +348,19 @@ export class QuizzesService {
     };
 
     const attempt = await this.prisma.quizAttempt.create({
-      data: { quizId, userId, answers, score, timeTakenSeconds },
+      data: {
+        quizId,
+        userId,
+        answers: answers as any, // ✅ Prisma Json field
+        score: score as any,
+        timeTakenSeconds,
+      },
     });
+
     return { attemptId: attempt.id, score };
   }
 
+  // ── My attempts for 1 quiz ──────────────────────────────────────────────────
   async getMyAttempts(quizId: string, userId: string) {
     return this.prisma.quizAttempt.findMany({
       where: { quizId, userId },
@@ -350,6 +375,7 @@ export class QuizzesService {
     });
   }
 
+  // ── Attempt history (all quizzes) ───────────────────────────────────────────
   async getAttemptHistory(userId: string, current = 1, pageSize = 10) {
     const skip = (current - 1) * pageSize;
     const where = { userId };

@@ -23,8 +23,12 @@ import { CefrLevel } from '../generated/prisma/enums';
 export class QuizzesController {
   constructor(private readonly service: QuizzesService) {}
 
-  // ── Public (không cần đăng nhập) ──────────────────────────────────────────
+  // ─────────────────────────────────────────────────────────────────────────
+  // QUAN TRỌNG: Các route tĩnh PHẢI đặt TRƯỚC route có param (:id)
+  // Nếu không NestJS sẽ match 'me/history' vào ':id' → sai
+  // ─────────────────────────────────────────────────────────────────────────
 
+  // ── Static routes (no param) ────────────────────────────────────────────
   @Get()
   @Public()
   @ResponseMessage('Lấy danh sách quiz')
@@ -40,11 +44,11 @@ export class QuizzesController {
       pageSize: +pageSize || 6,
       ...(level && { level }),
       ...(search && { search }),
-      // Không truyền isPublished → trả tất cả (admin xem được cả bản nháp)
       ...(isPublished !== undefined && { isPublished: isPublished === 'true' }),
     });
   }
 
+  // ✅ PHẢI đặt trước @Get(':id')
   @Get('me/history')
   @ResponseMessage('Lịch sử tất cả quiz đã làm')
   history(
@@ -59,6 +63,13 @@ export class QuizzesController {
     );
   }
 
+  @Post()
+  @ResponseMessage('Tạo quiz mới')
+  create(@Body() dto: CreateQuizDto, @User() user: IUser) {
+    return this.service.create(dto, user);
+  }
+
+  // ── Param routes (:id) — đặt SAU static routes ──────────────────────────
   @Get(':id')
   @Public()
   @ResponseMessage('Lấy chi tiết quiz')
@@ -66,8 +77,7 @@ export class QuizzesController {
     return this.service.findOne(id);
   }
 
-  // ── Cần đăng nhập ──────────────────────────────────────────────────────────
-
+  // ✅ POST /:id/submit — quizId từ URL param, KHÔNG lấy từ body
   @Post(':id/submit')
   @ResponseMessage('Nộp bài và tính điểm')
   submit(
@@ -75,22 +85,13 @@ export class QuizzesController {
     @Body() dto: SubmitAttemptDto,
     @User() user: IUser,
   ) {
-    // quizId từ URL override quizId trong body (phòng mismatch)
     return this.service.submitAttempt({ ...dto, quizId }, user.id);
   }
 
   @Get(':id/my-attempts')
-  @ResponseMessage('Lịch sử làm bài')
+  @ResponseMessage('Lịch sử làm bài của quiz này')
   myAttempts(@Param('id') quizId: string, @User() user: IUser) {
     return this.service.getMyAttempts(quizId, user.id);
-  }
-
-  // ── Admin only ──────────────────────────────────────────────────────────────
-
-  @Post()
-  @ResponseMessage('Tạo quiz mới')
-  create(@Body() dto: CreateQuizDto, @User() user: IUser) {
-    return this.service.create(dto, user);
   }
 
   @Patch(':id')

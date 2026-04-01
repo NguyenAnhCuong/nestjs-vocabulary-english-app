@@ -12,6 +12,7 @@ import {
   IsNotEmpty,
   ArrayMinSize,
   ArrayMaxSize,
+  IsObject,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { PartialType } from '@nestjs/mapped-types';
@@ -31,7 +32,7 @@ export class CreatePronunciationQuestionDto {
   @IsArray() @IsString({ each: true }) @IsOptional() phonetics?: string[];
 }
 
-// ── Vocabulary question (1–15 câu) ─────────────────────────────────────────
+// ── Vocabulary question (1–15 câu) ──────────────────────────────────────────
 export class CreateVocabularyQuestionDto {
   @IsInt() @Min(1) order: number;
   @IsString() @IsNotEmpty() question: string;
@@ -46,7 +47,7 @@ export class CreateVocabularyQuestionDto {
 
 // ── Reading blank ───────────────────────────────────────────────────────────
 export class CreateReadingBlankDto {
-  @IsString() @IsNotEmpty() label: string; // "BLANK1", "BLANK2"...
+  @IsString() @IsNotEmpty() label: string;
   @IsArray()
   @ArrayMinSize(4)
   @ArrayMaxSize(4)
@@ -58,7 +59,7 @@ export class CreateReadingBlankDto {
 export class CreateReadingQuestionDto {
   @IsInt() @Min(1) order: number;
   @IsString() @IsNotEmpty() title: string;
-  @IsString() @IsNotEmpty() passage: string; // văn bản có [BLANK1], [BLANK2]...
+  @IsString() @IsNotEmpty() passage: string;
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => CreateReadingBlankDto)
@@ -76,7 +77,6 @@ export class CreateQuizDto {
   @IsArray() @IsString({ each: true }) @IsOptional() tags?: string[];
   @IsBoolean() @IsOptional() isPublished?: boolean;
 
-  /** Đúng 5 câu phát âm */
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => CreatePronunciationQuestionDto)
@@ -84,7 +84,6 @@ export class CreateQuizDto {
   @ArrayMaxSize(5)
   pronunciationQuestions: CreatePronunciationQuestionDto[];
 
-  /** 1–15 câu từ vựng */
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => CreateVocabularyQuestionDto)
@@ -92,7 +91,6 @@ export class CreateQuizDto {
   @ArrayMaxSize(15)
   vocabularyQuestions: CreateVocabularyQuestionDto[];
 
-  /** 1 bài đọc hiểu */
   @ValidateNested()
   @Type(() => CreateReadingQuestionDto)
   readingQuestion: CreateReadingQuestionDto;
@@ -102,9 +100,17 @@ export class UpdateQuizDto extends PartialType(CreateQuizDto) {}
 
 // ── Submit attempt ──────────────────────────────────────────────────────────
 export class SubmitAttemptDto {
-  @IsString() @IsNotEmpty() quizId: string;
-  /** Map: questionId | blankId → answer chọn */
+  // quizId optional trong body — sẽ bị override bởi URL param
+  @IsString() @IsOptional() quizId?: string;
+
+  /**
+   * Map: questionId → answer (pronunciation & vocabulary)
+   *      blankId    → answer (reading_blank)
+   * ✅ @IsObject() để class-validator không strip
+   */
+  @IsObject()
   answers: Record<string, string>;
+
   @IsInt() @Min(0) timeTakenSeconds: number;
 }
 
