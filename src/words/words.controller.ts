@@ -9,13 +9,22 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { IsArray, ValidateNested } from 'class-validator';
+import { Type } from 'class-transformer';
 import { CreateWordDto } from './dto/create-word.dto';
-import { UpdateWordDto } from './dto/update-word.dto';
-import { FilterWordDto } from './dto/update-word.dto';
+import { UpdateWordDto, FilterWordDto } from './dto/update-word.dto';
 import { ResponseMessage, User } from 'src/decorator/customize';
 import { CefrLevel } from '../generated/prisma/enums';
 import { WordsService } from './words.service';
 import type { IUser } from 'src/common/interfaces';
+
+// ← DTO riêng, không dùng lồng CreateWordDto vì class-validator cần @Type
+class BulkCreateWordDto {
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => CreateWordDto)
+  words: CreateWordDto[];
+}
 
 @Controller('words')
 export class WordsController {
@@ -25,6 +34,13 @@ export class WordsController {
   @ResponseMessage('Tạo từ vựng mới')
   create(@Body() dto: CreateWordDto) {
     return this.service.create(dto);
+  }
+
+  // ← PHẢI đặt TRƯỚC @Get('due') và @Get(':id') để tránh bị match nhầm route
+  @Post('bulk')
+  @ResponseMessage('Tạo hàng loạt từ vựng')
+  bulkCreate(@Body() dto: BulkCreateWordDto) {
+    return this.service.bulkCreate(dto.words);
   }
 
   @Get()

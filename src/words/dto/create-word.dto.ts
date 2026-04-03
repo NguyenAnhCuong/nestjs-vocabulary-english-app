@@ -6,8 +6,10 @@ import {
   IsOptional,
   IsString,
   MaxLength,
+  ValidateNested,
 } from 'class-validator';
 import { CefrLevel, WordType } from '../../generated/prisma/enums';
+import { Type } from 'class-transformer';
 
 export class CreateWordDto {
   @IsString()

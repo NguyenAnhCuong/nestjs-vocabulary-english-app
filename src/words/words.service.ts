@@ -141,4 +141,45 @@ export class WordsService {
     });
     return progresses;
   }
+
+  // Thêm vào WordsService
+  async bulkCreate(rows: CreateWordDto[]) {
+    const results = { created: 0, skipped: 0, errors: [] as string[] };
+
+    for (const dto of rows) {
+      try {
+        const { topicIds, ...wordData } = dto;
+
+        // ← Thêm log tạm để debug
+        console.log(`[bulkCreate] "${dto.en}" topicIds=`, topicIds);
+
+        const exists = await this.prisma.word.findUnique({
+          where: { en: wordData.en },
+        });
+        if (exists) {
+          results.skipped++;
+          results.errors.push(`Bỏ qua "${wordData.en}": từ đã tồn tại`);
+          continue;
+        }
+
+        await this.prisma.word.create({
+          data: {
+            ...wordData,
+            tags: wordData.tags ?? [],
+            // ← Đảm bảo chỉ tạo wordTopics khi topicIds thực sự có phần tử
+            wordTopics:
+              topicIds && topicIds.length > 0
+                ? { create: topicIds.map((topicId) => ({ topicId })) }
+                : undefined,
+          },
+        });
+        results.created++;
+      } catch (e: any) {
+        results.skipped++;
+        results.errors.push(`Lỗi "${dto.en}": ${e.message}`);
+      }
+    }
+
+    return results;
+  }
 }
