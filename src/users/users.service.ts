@@ -125,15 +125,28 @@ export class UsersService {
   }
 
   async update(id: string, updateUserDto: UpdateUserDto, user: IUser) {
+    const { password, currentPassword, role, ...rest } = updateUserDto;
+
+    let newPassword: string | undefined;
+    if (password) {
+      if (currentPassword) {
+        const found = await this.prisma.user.findUnique({ where: { id } });
+        if (
+          !found?.password ||
+          !this.checkUserPassword(found.password, currentPassword)
+        ) {
+          throw new BadRequestException('Mật khẩu hiện tại không đúng!');
+        }
+      }
+      newPassword = this.getHashPassword(password);
+    }
+
     return await this.prisma.user.update({
       where: { id },
       data: {
-        ...updateUserDto,
-        role: updateUserDto.role ? (updateUserDto.role as Role) : undefined,
-        updatedBy: {
-          id: user.id,
-          email: user.email,
-        } as any,
+        ...rest,
+        ...(newPassword ? { password: newPassword } : {}),
+        updatedBy: { id: user.id, email: user.email } as any,
       },
     });
   }
