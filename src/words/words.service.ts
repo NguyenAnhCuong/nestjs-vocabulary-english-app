@@ -144,29 +144,63 @@ export class WordsService {
 
   // Thêm vào WordsService
   async bulkCreate(rows: CreateWordDto[]) {
-    const results = { created: 0, skipped: 0, errors: [] as string[] };
+    const results = {
+      created: 0,
+      restored: 0,
+      skipped: 0,
+      errors: [] as string[],
+    };
 
     for (const dto of rows) {
       try {
         const { topicIds, ...wordData } = dto;
 
-        // ← Thêm log tạm để debug
-        console.log(`[bulkCreate] "${dto.en}" topicIds=`, topicIds);
-
-        const exists = await this.prisma.word.findUnique({
+        const existing = await this.prisma.word.findUnique({
           where: { en: wordData.en },
+          include: { wordTopics: true },
         });
-        if (exists) {
-          results.skipped++;
-          results.errors.push(`Bỏ qua "${wordData.en}": từ đã tồn tại`);
+
+        if (existing) {
+          if (!existing.isActive) {
+            // ── Từ đã soft-delete → khôi phục + cập nhật dữ liệu mới + gán lại topics
+            await this.prisma.$transaction(async (tx) => {
+              // Xoá hết topic cũ rồi gán topic mới (nếu có)
+              await tx.wordTopic.deleteMany({ where: { wordId: existing.id } });
+
+              if (topicIds && topicIds.length > 0) {
+                await tx.wordTopic.createMany({
+                  data: topicIds.map((topicId) => ({
+                    wordId: existing.id,
+                    topicId,
+                  })),
+                  skipDuplicates: true,
+                });
+              }
+
+              await tx.word.update({
+                where: { id: existing.id },
+                data: {
+                  ...wordData,
+                  tags: wordData.tags ?? existing.tags,
+                  isActive: true, // ← khôi phục
+                },
+              });
+            });
+
+            results.restored++;
+          } else {
+            // Từ đang active → bỏ qua
+            results.skipped++;
+            results.errors.push(`Bỏ qua "${wordData.en}": từ đã tồn tại`);
+          }
           continue;
         }
 
+        // ── Từ chưa tồn tại → tạo mới
         await this.prisma.word.create({
           data: {
             ...wordData,
             tags: wordData.tags ?? [],
-            // ← Đảm bảo chỉ tạo wordTopics khi topicIds thực sự có phần tử
             wordTopics:
               topicIds && topicIds.length > 0
                 ? { create: topicIds.map((topicId) => ({ topicId })) }

@@ -23,7 +23,7 @@ class BulkCreateWordDto {
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => CreateWordDto)
-  words: CreateWordDto[];
+  words!: CreateWordDto[];
 }
 
 @Controller('words')
