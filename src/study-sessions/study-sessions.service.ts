@@ -99,10 +99,12 @@ export class StudySessionsService {
 
   /** Tổng hợp stats cho dashboard */
   async getDashboardStats(userId: string) {
-    const [today, streak, weekSessions] = await Promise.all([
+    const [today, streak, weekSessions, loginDays] = await Promise.all([
       this.getToday(userId),
       this.getCurrentStreak(userId),
       this.getHistory(userId, 7),
+      // ← Thêm: đếm tổng số ngày đã có session = số ngày đã học
+      this.prisma.studySession.count({ where: { userId } }),
     ]);
 
     const weekTotal = weekSessions.reduce(
@@ -123,6 +125,7 @@ export class StudySessionsService {
         xpEarned: 0,
       },
       streak,
+      loginDays, // ← thêm field này
       week: {
         sessions: weekSessions,
         totals: weekTotal,

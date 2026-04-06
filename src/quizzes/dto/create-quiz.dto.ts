@@ -20,59 +20,59 @@ import { CefrLevel } from '../../generated/prisma/enums';
 
 // ── Pronunciation question (5 câu) ─────────────────────────────────────────
 export class CreatePronunciationQuestionDto {
-  @IsInt() @Min(1) order: number;
-  @IsString() @IsNotEmpty() question: string;
+  @IsInt() @Min(1) order!: number;
+  @IsString() @IsNotEmpty() question!: string;
   @IsArray()
   @ArrayMinSize(4)
   @ArrayMaxSize(4)
   @IsString({ each: true })
-  options: string[];
-  @IsString() @IsNotEmpty() answer: string;
-  @IsString() @IsNotEmpty() explanation: string;
+  options!: string[];
+  @IsString() @IsNotEmpty() answer!: string;
+  @IsString() @IsNotEmpty() explanation!: string;
   @IsArray() @IsString({ each: true }) @IsOptional() phonetics?: string[];
 }
 
 // ── Vocabulary question (1–15 câu) ──────────────────────────────────────────
 export class CreateVocabularyQuestionDto {
-  @IsInt() @Min(1) order: number;
-  @IsString() @IsNotEmpty() question: string;
+  @IsInt() @Min(1) order!: number;
+  @IsString() @IsNotEmpty() question!: string;
   @IsArray()
   @ArrayMinSize(4)
   @ArrayMaxSize(4)
   @IsString({ each: true })
-  options: string[];
-  @IsString() @IsNotEmpty() answer: string;
-  @IsString() @IsNotEmpty() explanation: string;
+  options!: string[];
+  @IsString() @IsNotEmpty() answer!: string;
+  @IsString() @IsNotEmpty() explanation!: string;
 }
 
 // ── Reading blank ───────────────────────────────────────────────────────────
 export class CreateReadingBlankDto {
-  @IsString() @IsNotEmpty() label: string;
+  @IsString() @IsNotEmpty() label!: string;
   @IsArray()
   @ArrayMinSize(4)
   @ArrayMaxSize(4)
   @IsString({ each: true })
-  options: string[];
-  @IsString() @IsNotEmpty() answer: string;
+  options!: string[];
+  @IsString() @IsNotEmpty() answer!: string;
 }
 
 export class CreateReadingQuestionDto {
-  @IsInt() @Min(1) order: number;
-  @IsString() @IsNotEmpty() title: string;
-  @IsString() @IsNotEmpty() passage: string;
+  @IsInt() @Min(1) order!: number;
+  @IsString() @IsNotEmpty() title!: string;
+  @IsString() @IsNotEmpty() passage!: string;
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => CreateReadingBlankDto)
   @ArrayMinSize(1)
   @ArrayMaxSize(8)
-  blanks: CreateReadingBlankDto[];
+  blanks!: CreateReadingBlankDto[];
 }
 
 // ── Create Quiz ─────────────────────────────────────────────────────────────
 export class CreateQuizDto {
-  @IsString() @IsNotEmpty() title: string;
+  @IsString() @IsNotEmpty() title!: string;
   @IsString() @IsOptional() description?: string;
-  @IsEnum(CefrLevel) level: CefrLevel;
+  @IsEnum(CefrLevel) level!: CefrLevel;
   @IsInt() @Min(10) @Max(120) @IsOptional() durationMinutes?: number;
   @IsArray() @IsString({ each: true }) @IsOptional() tags?: string[];
   @IsBoolean() @IsOptional() isPublished?: boolean;
@@ -82,36 +82,29 @@ export class CreateQuizDto {
   @Type(() => CreatePronunciationQuestionDto)
   @ArrayMinSize(5)
   @ArrayMaxSize(5)
-  pronunciationQuestions: CreatePronunciationQuestionDto[];
+  pronunciationQuestions!: CreatePronunciationQuestionDto[];
 
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => CreateVocabularyQuestionDto)
   @ArrayMinSize(1)
   @ArrayMaxSize(15)
-  vocabularyQuestions: CreateVocabularyQuestionDto[];
+  vocabularyQuestions!: CreateVocabularyQuestionDto[];
 
   @ValidateNested()
   @Type(() => CreateReadingQuestionDto)
-  readingQuestion: CreateReadingQuestionDto;
+  readingQuestion!: CreateReadingQuestionDto;
 }
 
 export class UpdateQuizDto extends PartialType(CreateQuizDto) {}
 
 // ── Submit attempt ──────────────────────────────────────────────────────────
 export class SubmitAttemptDto {
-  // quizId optional trong body — sẽ bị override bởi URL param
   @IsString() @IsOptional() quizId?: string;
-
-  /**
-   * Map: questionId → answer (pronunciation & vocabulary)
-   *      blankId    → answer (reading_blank)
-   * ✅ @IsObject() để class-validator không strip
-   */
   @IsObject()
-  answers: Record<string, string>;
+  answers!: Record<string, string>;
 
-  @IsInt() @Min(0) timeTakenSeconds: number;
+  @IsInt() @Min(0) timeTakenSeconds!: number;
 }
 
 // ── Filter ──────────────────────────────────────────────────────────────────

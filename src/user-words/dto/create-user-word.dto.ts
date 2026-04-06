@@ -5,7 +5,7 @@ import { CefrLevel, WordType } from '../../generated/prisma/enums';
 export class CreateUserWordDto {
   @IsString()
   @MaxLength(200)
-  en: string;
+  en!: string;
 
   @IsOptional()
   @IsString()
@@ -20,7 +20,7 @@ export class CreateUserWordDto {
   level?: CefrLevel;
 
   @IsString()
-  meaning: string;
+  meaning!: string;
 
   @IsOptional()
   @IsString()

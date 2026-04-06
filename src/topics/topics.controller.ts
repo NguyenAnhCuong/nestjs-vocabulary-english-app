@@ -1,7 +1,13 @@
 // src/topics/topics.controller.ts
 import {
-  Body, Controller, Delete, Get, Param,
-  Patch, Post, Query,
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
 } from '@nestjs/common';
 import { TopicsService } from './topics.service';
 import { CreateTopicDto } from './dto/create-topic.dto';
@@ -12,7 +18,7 @@ import { IsArray, IsString } from 'class-validator';
 class AssignWordsDto {
   @IsArray()
   @IsString({ each: true })
-  wordIds: string[];
+  wordIds!: string[];
 }
 
 @Controller('topics')
@@ -32,7 +38,11 @@ export class TopicsController {
     @Query('pageSize') pageSize: string,
     @Query('onlyActive') onlyActive: string,
   ) {
-    return this.service.findAll(+current || 1, +pageSize || 10, onlyActive === 'true');
+    return this.service.findAll(
+      +current || 1,
+      +pageSize || 10,
+      onlyActive === 'true',
+    );
   }
 
   @Get(':id')

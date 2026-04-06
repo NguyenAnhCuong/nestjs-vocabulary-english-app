@@ -8,7 +8,7 @@ import { Type } from 'class-transformer';
 
 class WordRowDto {
   @IsString()
-  en: string;
+  en!: string;
 
   @IsOptional()
   @IsString()
@@ -23,7 +23,7 @@ class WordRowDto {
   level?: string;
 
   @IsString()
-  meaning: string;
+  meaning!: string;
 
   @IsOptional()
   @IsString()
@@ -42,7 +42,7 @@ class ImportDto {
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => WordRowDto)
-  words: WordRowDto[];
+  words!: WordRowDto[];
 }
 
 @Controller('import-export')

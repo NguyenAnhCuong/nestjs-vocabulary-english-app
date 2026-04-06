@@ -39,13 +39,12 @@ export class AppController {
   @Post('/login')
   @UseGuards(LocalAuthGuard)
   @ResponseMessage('User login')
-  async handleLogin(@Request() req, @Res({ passthrough: true }) res: any) {
-    console.log('req.user', req.user);
+  async handleLogin(@Request() req: any, @Res({ passthrough: true }) res: any) {
     return this.authService.login(req.user, res);
   }
 
   @Post('/profile')
-  async getProfile(@Request() req) {
+  async getProfile(@Request() req: any) {
     return req.user;
   }
 

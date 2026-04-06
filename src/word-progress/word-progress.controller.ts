@@ -10,7 +10,7 @@ class SubmitReviewDto implements ReviewResultDto {
   @IsNumber()
   @Min(0)
   @Max(5)
-  quality: 0 | 1 | 2 | 3 | 4 | 5;
+  quality!: 0 | 1 | 2 | 3 | 4 | 5;
 
   @IsOptional()
   @IsString()
@@ -23,7 +23,7 @@ class SubmitReviewDto implements ReviewResultDto {
 
 class StartLearningDto {
   @IsString()
-  wordId: string;
+  wordId!: string;
 }
 
 @Controller('word-progress')
